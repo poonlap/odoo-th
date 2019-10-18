@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM debian:testing
 LABEL maintainer="Poonalp V. <poonlap@tanabutr.co.th>"
 
 # Generate locale C.UTF-8 for postgres and general locale data
@@ -13,7 +13,7 @@ RUN set -x; \
             dirmngr \
             fonts-noto-cjk \
             gnupg \
-            libssl1.0-dev \
+            #libssl1.0-dev \
             node-less \
             python3-pip \
             python3-pyldap \
@@ -53,7 +53,7 @@ RUN set -x;\
     && gpgconf --kill all \
     && rm -rf "$GNUPGHOME" \
     && apt-get update \
-    && apt-get install -y nodejs \
+    && apt-get install -y nodejs npm\
     && npm install -g rtlcss \
     && rm -rf /var/lib/apt/lists/*
 
