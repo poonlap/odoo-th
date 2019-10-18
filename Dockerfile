@@ -60,6 +60,7 @@ RUN apt update \
 
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /
+RUN chmod +x /entrypoint.sh
 COPY ./odoo.conf /etc/odoo/
 RUN chown odoo /etc/odoo/odoo.conf
 
@@ -78,5 +79,5 @@ ENV ODOO_RC /etc/odoo/odoo.conf
 # Set default user when running the container
 USER odoo
 
-ENTRYPOINT ["sh", "/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["odoo"]
