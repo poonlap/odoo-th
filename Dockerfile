@@ -1,5 +1,5 @@
 FROM debian:testing
-LABEL maintainer="Poonalp V. <poonlap@tanabutr.co.th>"
+LABEL maintainer="Poonlap V. <poonlap@tanabutr.co.th>"
 
 # Generate locale C.UTF-8 for postgres and general locale data
 ENV LANG C.UTF-8
@@ -13,7 +13,6 @@ RUN set -x; \
             dirmngr \
             fonts-noto-cjk \
             gnupg \
-            #libssl1.0-dev \
             node-less \
             python3-pip \
             python3-pyldap \
@@ -23,7 +22,7 @@ RUN set -x; \
             python3-vobject \
             python3-watchdog \
             xz-utils \
-            fonts-tlwg-laksaman \
+	    fonts-tlwg-laksaman \
         && curl -o wkhtmltox.deb -sSL https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb \
         && echo '7e35a63f9db14f93ec7feeb0fce76b30c08f2057 wkhtmltox.deb' | sha1sum -c - \
         && dpkg --force-depends -i wkhtmltox.deb\
@@ -59,18 +58,17 @@ RUN set -x;\
 
 # Install Odoo
 ENV ODOO_VERSION 13.0
-ARG ODOO_RELEASE=20191017
-#ARG ODOO_SHA=e95cdfe23d16a8572b63bc8d8e8616be5bc18a0a
+ARG ODOO_RELEASE=20191016
+ARG ODOO_SHA=3885be6791b9b8c2a74115299e57213c71db4363
 RUN set -x; \
         curl -o odoo.deb -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}.${ODOO_RELEASE}_all.deb \
-        #&& echo "${ODOO_SHA} odoo.deb" | sha1sum -c - \
         && dpkg --force-depends -i odoo.deb \
         && apt-get update \
         && apt-get -y install -f --no-install-recommends \
         && rm -rf /var/lib/apt/lists/* odoo.deb
 
 # Copy entrypoint script and Odoo configuration file
-#RUN pip3 install num2words xlwt
+RUN pip3 install num2words xlwt
 COPY ./entrypoint.sh /
 COPY ./odoo.conf /etc/odoo/
 RUN chown odoo /etc/odoo/odoo.conf
