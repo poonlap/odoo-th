@@ -60,6 +60,7 @@ RUN apt update \
 
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /
+RUN chmod +x /entrypoint.sh
 COPY ./odoo.conf /etc/odoo/
 RUN chown odoo /etc/odoo/odoo.conf
 
