@@ -14,7 +14,7 @@ RUN apt update \
 RUN apt -yq install fonts-tlwg-laksaman
 
 # install postgres
-RUN apt-get install postgresql -y
+RUN apt install postgresql -y
 
 
 # Install some deps, lessc and less-plugin-clean-css
