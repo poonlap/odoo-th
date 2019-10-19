@@ -10,7 +10,7 @@ $ docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=p
 ```
 ## สร้าง instance ของ Odoo
 ```
-$ docker run -p 8069:8069 --name odoo --link db:db -t poonlap/odoo13-th
+$ docker run -p 8069:8069 --name odoo --link db:db -t poonlap/odoo-th
 ```
 
 # ทดลองใช้
