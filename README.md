@@ -1,7 +1,7 @@
 # นี่คืออะไร
-เป็น docker image สำหรับรัน Odoo 13  พร้อมกับฟอนต์ไทย สำหรับพิมพ์ PDF 
-
-อาจจะเพิ่ม module OCA l10n-th ต่อไป
+docker image สำหรับรัน Odoo 13  ได้ทันทีโดยรวม
+- ฟอนต์ภาษาไทย สำหรับพิมพ์ PDF 
+- OCA l10n-thailand module
 
 # ใช้อย่างไร
 ## สร้าง instance ของ PostgreSQL 
@@ -16,7 +16,8 @@ $ docker run -p 8069:8069 --name odoo --link db:db -t poonlap/odoo-th
 # ทดลองใช้
 เปิดเบราเซอร์ เข้า http://localhost:8069
 
-# ทดสอบ PDF ภาษาไทย
+# ทดสอบ 
+## PDF ภาษาไทย
 สร้างใบเสนอราคา ตั้งชื่อลูกค้าภาษาไทย สั่งพิมพ์ 
 ![](https://raw.githubusercontent.com/poonlap/images/master/testpdf.png)
 
