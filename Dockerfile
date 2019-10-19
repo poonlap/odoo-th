@@ -58,6 +58,15 @@ RUN curl https://nightly.odoo.com/odoo.key | apt-key add - \
 RUN apt update \
 	&& apt install -y odoo
 
+RUN apt install -yq git
+RUN mkdir -p /opt/odoo/addons \ 
+	&& cd /opt/odoo/addons \
+	&& git clone https://github.com/OCA/l10n-thailand.git
+
+# delete this when l10n-thailand is v.13
+RUN cd /opt/odoo/addons/l10n-thailand/l10n_th_partner \
+	&& sed -i s/12.0/13.0/ __manifest__.py
+
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh
