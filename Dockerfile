@@ -1,14 +1,13 @@
 FROM ubuntu:18.04
 LABEL maintainer="Poonlap V. <poonlap@tanabutr.co.th>"
 
-# Set timezone to Thailand
-RUN ln -sf /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
-
-# Generate locale 
+# Generate locale, set timezone
 RUN apt update \
-	&& apt -yq install locales \
+	&& apt -yq install locales tzdata\
 	&& sed -i 's/# th_/th_/' /etc/locale.gen \
-	&& locale-gen
+	&& locale-gen \
+        && cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
+
 
 # install Laksaman font (Sarabun)
 RUN apt -yq install fonts-tlwg-laksaman
@@ -20,7 +19,7 @@ RUN apt install postgresql -y
 # Install some deps, lessc and less-plugin-clean-css
 RUN apt install -y --no-install-recommends \
             ca-certificates \
-            curl \
+            curl \ 
             dirmngr \
 	    # if you need CJK
             # fonts-noto-cjk \
@@ -34,7 +33,8 @@ RUN apt install -y --no-install-recommends \
             python3-setuptools \
             python3-vobject \
             python3-watchdog \
-            xz-utils 
+            xz-utils \
+            git
 
 # install wkhtmltopdf
 RUN apt install -y --no-install-recommends \
@@ -58,14 +58,18 @@ RUN curl https://nightly.odoo.com/odoo.key | apt-key add - \
 RUN apt update \
 	&& apt install -y odoo
 
-RUN apt install -yq git
+RUN pip3 install num2words xlwt
+
 RUN mkdir -p /opt/odoo/addons \ 
 	&& cd /opt/odoo/addons \
-	&& git clone https://github.com/OCA/l10n-thailand.git
+	&& git clone https://github.com/OCA/l10n-thailand.git \
+        && git clone --single-branch --branch 13.0 https://github.com/OCA/web.git
 
-# delete this when l10n-thailand is v.13
-RUN cd /opt/odoo/addons/l10n-thailand/l10n_th_partner \
-	&& sed -i s/12.0/13.0/ __manifest__.py
+# delete this when l10n-thailand is updated to v.13
+# at this moment l10n_th_partner is OK for 13.0
+RUN sed -i s/12.0/13.0/ /opt/odoo/addons/l10n-thailand/l10n_th_partner/__manifest__.py
+
+#RUN pip3 install odoo13-addon-web-responsive
 
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /
