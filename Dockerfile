@@ -2,22 +2,22 @@ FROM ubuntu:18.04
 LABEL maintainer="Poonlap V. <poonlap@tanabutr.co.th>"
 
 # Generate locale, set timezone
-RUN apt update \
-	&& apt -yq install locales tzdata\
+RUN apt-get update \
+	&& apt-get -yq install locales tzdata\
 	&& sed -i 's/# th_/th_/' /etc/locale.gen \
 	&& locale-gen \
         && cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
 
 
 # install Laksaman font (Sarabun)
-RUN apt -yq install fonts-tlwg-laksaman
+RUN apt-get -yq install fonts-tlwg-laksaman
 
 # install postgres
-RUN apt install postgresql -y
+RUN apt-get install postgresql -y
 
 
 # Install some deps, lessc and less-plugin-clean-css
-RUN apt install -y --no-install-recommends \
+RUN apt-get install -y --no-install-recommends \
             ca-certificates \
             curl \ 
             dirmngr \
@@ -37,7 +37,7 @@ RUN apt install -y --no-install-recommends \
             git
 
 # install wkhtmltopdf
-RUN apt install -y --no-install-recommends \
+RUN apt-get install -y --no-install-recommends \
 	libjpeg62 \
 	libx11-6 \
 	libxext6 \
@@ -48,17 +48,17 @@ RUN apt install -y --no-install-recommends \
         && dpkg --force-depends -i wkhtmltox.deb\
         && rm -rf /var/lib/apt/lists/* wkhtmltox.deb \
 	&& cp -v /usr/local/bin/wkhtml* /usr/bin \
-	&& apt install -y --fix-broken
+	&& apt-get install -y --fix-broken
 
 # Repository
 RUN curl https://nightly.odoo.com/odoo.key | apt-key add - \
 	&& echo "deb http://nightly.odoo.com/13.0/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list
 
 # Install odoo
-RUN apt update \
-	&& apt install -y odoo
+RUN apt-get update \
+	&& apt-get install -y odoo
 
-RUN pip3 install num2words xlwt
+RUN pip3 install num2words xlwt --no-cache-dir
 
 RUN mkdir -p /opt/odoo/addons \ 
 	&& cd /opt/odoo/addons \
