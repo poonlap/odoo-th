@@ -1,13 +1,23 @@
-FROM ubuntu:18.04
+ARG VERSION=latest
+FROM odoo:${VERSION}
+ARG VERSION
 LABEL maintainer="Poonlap V. <poonlap@tanabutr.co.th>"
 
+USER root
+RUN echo "Building Docker image for Odoo version $VERSION" 
+    
 # Generate locale, set timezone
 RUN apt-get update \
+<<<<<<< HEAD
 	&& apt-get -yq install locales tzdata\
+=======
+	&& apt-get -yq install locales tzdata git curl fonts-tlwg-laksaman\
+>>>>>>> official_base
 	&& sed -i 's/# th_/th_/' /etc/locale.gen \
 	&& locale-gen \
-        && cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
+    && cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
 
+<<<<<<< HEAD
 
 # install Laksaman font (Sarabun)
 RUN apt-get -yq install fonts-tlwg-laksaman
@@ -61,15 +71,22 @@ RUN apt-get update \
 RUN pip3 install num2words xlwt --no-cache-dir
 
 RUN mkdir -p /opt/odoo/addons \ 
+=======
+# Add Odoo Repository for upgrading and commit the image
+RUN curl https://nightly.odoo.com/odoo.key | apt-key add - \
+	&& echo "deb http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list
+
+# Add OCA modules via git
+# delete sed line when l10n_th v13 is released
+RUN if [ ${VERSION} = 13.0  ] || [ ${VERSION} = 'latest' ]; then l10n_th_v='12.0'; else l10n_th_v=${ODOO_VERSION}; fi \
+	&& echo "l10n_th modules: " ${l10n_th_v} \
+	&& mkdir -p /opt/odoo/addons \ 
+>>>>>>> official_base
 	&& cd /opt/odoo/addons \
-	&& git clone https://github.com/OCA/l10n-thailand.git \
-        && git clone --single-branch --branch 13.0 https://github.com/OCA/web.git
+	&& git clone --single-branch --branch ${l10n_th_v} https://github.com/OCA/l10n-thailand.git \
+    && git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/web.git \
+	&& sed -i s/${l10n_th_v}/${ODOO_VERSION}/ /opt/odoo/addons/l10n-thailand/l10n_th_partner/__manifest__.py
 
-# delete this when l10n-thailand is updated to v.13
-# at this moment l10n_th_partner is OK for 13.0
-RUN sed -i s/12.0/13.0/ /opt/odoo/addons/l10n-thailand/l10n_th_partner/__manifest__.py
-
-#RUN pip3 install odoo13-addon-web-responsive
 
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /
