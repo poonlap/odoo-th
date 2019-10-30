@@ -65,6 +65,8 @@ Creating temp_web_1 ... done
 
 ![](https://raw.githubusercontent.com/poonlap/images/master/odoo12_l10nth.png)
 
+![](https://raw.githubusercontent.com/poonlap/images/master/l10n_thailand.png)
+
 ## PDF ภาษาไทย
 สร้างใบเสนอราคา ตั้งชื่อลูกค้าภาษาไทย สั่งพิมพ์ 
 
