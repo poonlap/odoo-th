@@ -59,14 +59,17 @@ Creating temp_web_1 ... done
 # ทดสอบ 
 ## PDF ภาษาไทย
 สร้างใบเสนอราคา ตั้งชื่อลูกค้าภาษาไทย สั่งพิมพ์ 
+
 ![](https://raw.githubusercontent.com/poonlap/images/master/testpdf.png)
 
 ## โมดูล l10n_thailand ทั้งหมด
-- ถ้าใช้ image poonlap/odoo-th:12.0 จะสามารถใช้โมดูล l10n_thailand ได้ทั้งหมด รันคอนเทนเนอร์แล้ว ไปที่ Apps ลบ filter แล้วพิมพ์ thai เพื่อหาโมดูลทั้งหมดของไทย แลติดตั้ง. 
+- ถ้าใช้ image poonlap/odoo-th:12.0 จะสามารถใช้โมดูล l10n_thailand ได้ทั้งหมด รันคอนเทนเนอร์แล้ว ไปที่ Apps ลบ filter แล้วพิมพ์ thai เพื่อหาโมดูลทั้งหมดของไทย และติดตั้ง. โมดูลอื่นๆของ OCA ที่จำเป็นที่ l10n_thailand ใช้จะติดตั้งอัตโนมัติตามไปด้วย เช่น [server-tools](https://github.com/OCA/server-tools) เป็นต้น.
 - ถ้าใช้ image poonlap/odoo-th:13.0 ตอนนี้ใช้ได้เฉพาะ l10n_thailand_partner เท่านั้น
+
 ![](https://raw.githubusercontent.com/poonlap/images/master/odoo12_l10nth.png)
 
 
 ## โมดูล l10n_thailand_partner
 ข้อมูลสาขาสำหรับบริษัทไทย
+
 ![](https://raw.githubusercontent.com/poonlap/images/master/branch.png)
