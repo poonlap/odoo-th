@@ -37,6 +37,8 @@ RUN pip3 install num2words xlwt xlrd openpyxl --no-cache-dir
 COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 COPY ./odoo.conf /etc/odoo/
+COPY ./odoo-12.0.conf /etc/odoo/
+RUN if [ ${VERSION} = 12.0 ]; then mv -v /etc/odoo/odoo-12.0.conf /etc/odoo/odoo.conf; fi
 RUN chown odoo /etc/odoo/odoo.conf
 
 # Mount /var/lib/odoo to allow restoring filestore and /mnt/extra-addons for users addons
