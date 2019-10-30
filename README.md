@@ -6,7 +6,7 @@ Docker image ที่ใช้งาน Odoo 13 หรือ Odoo 12 ได้�
   - Version 13 ณ ขณะนี้ ยังไม่มี version 13 แต่นำโมดูล l10n_th_partner มาใช้ได้ 1 ตัว
 - [OCA web modules](https://github.com/OCA/web) ที่ใช้ได้กับเวอร์ชั่น 13 แล้ว เช่น web responsive
 
-[Dockerfile](https://github.com/poonlap/odoo-th/blob/master/Dockerfile) ใช้ base มาจาก [Oddo Official](https://hub.docker.com/_/odoo) มีการเพิ่ม Odoo repository ไว้สำหรับ upgrade version ตาม nightly build ของแต่ละวันลงใน image (local) ได้ด้วย
+[Dockerfile](https://github.com/poonlap/odoo-th/blob/master/Dockerfile) ใช้ base มาจาก [Odoo Official](https://hub.docker.com/_/odoo) มีการเพิ่ม Odoo repository ไว้สำหรับ upgrade version ตาม nightly build ของแต่ละวันลงใน image (local) ได้ด้วย
 
 # ใช้อย่างไร
 ## รันด้วย docker (สำหรับทดสอบ)
