@@ -24,8 +24,13 @@ RUN if [ ${VERSION} = 13.0  ] || [ ${VERSION} = 'latest' ]; then l10n_th_v='12.0
 	&& mkdir -p /opt/odoo/addons \ 
 	&& cd /opt/odoo/addons \
 	&& git clone --single-branch --branch ${l10n_th_v} https://github.com/OCA/l10n-thailand.git \
-    && git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/web.git \
+	&& if [ ${VERSION} = 12.0 ]; then git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/server-tools.git; \
+	   git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/server-ux.git; \
+	   git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/reporting-engine.git; fi \
+        && git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/web.git \
 	&& sed -i s/${l10n_th_v}/${ODOO_VERSION}/ /opt/odoo/addons/l10n-thailand/l10n_th_partner/__manifest__.py
+
+RUN pip3 install num2words xlwt xlrd openpyxl --no-cache-dir 
 
 
 # Copy entrypoint script and Odoo configuration file
