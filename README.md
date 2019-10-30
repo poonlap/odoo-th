@@ -15,21 +15,23 @@ Docker image ที่ใช้งาน Odoo 13 หรือ Odoo 12 ได้�
 $ docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=postgres --name db postgres:10
 ```
 ### รัน Odoo 13 คอนเทนเนอร์
+ใช้อิมเมจ poonlap/odoo-th:13.0 หรือ poonlap/odoo-th:latest หรือ poonlap/odoo-th
 ```
 $ docker run -p 8069:8069 --name odoo13 --link db:db -t poonlap/odoo-th:13.0
 ```
 ### รัน Odoo 12 คอนเทนเนอร์
+ใช้อิมเมจ poonlap/odoo-th:12.0
 ```
 $ docker run -p 8069:8069 --name odoo12 --link db:db -t poonlap/odoo-th:12.0
 ```
 
 ## รันด้วย docker-compose (สำหรับใช้งานจริงจัง)
-สร้างไฟล์ docker-compose.yml
+สร้างไฟล์ docker-compose.yml ตัวอย่างเป็น Odoo 12.0
 ```
 version: '2'
 services:
   web:
-    image: poonlap/odoo-th:13.0
+    image: poonlap/odoo-th:12.0
     depends_on:
       - db
     ports:
