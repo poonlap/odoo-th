@@ -16,11 +16,11 @@ $ docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=p
 ```
 ### รัน Odoo 13 คอนเทนเนอร์
 ```
-$ docker run -p 8069:8069 --name odoo --link db:db -t poonlap/odoo-th:13.0
+$ docker run -p 8069:8069 --name odoo13 --link db:db -t poonlap/odoo-th:13.0
 ```
 ### รัน Odoo 12 คอนเทนเนอร์
 ```
-$ docker run -p 8069:8069 --name odoo --link db:db -t poonlap/odoo-th:12.0
+$ docker run -p 8069:8069 --name odoo12 --link db:db -t poonlap/odoo-th:12.0
 ```
 
 ## รันด้วย docker-compose (สำหรับใช้งานจริงจัง)
@@ -60,6 +60,12 @@ Creating temp_web_1 ... done
 ## PDF ภาษาไทย
 สร้างใบเสนอราคา ตั้งชื่อลูกค้าภาษาไทย สั่งพิมพ์ 
 ![](https://raw.githubusercontent.com/poonlap/images/master/testpdf.png)
+
+## โมดูล l10n_thailand ทั้งหมด
+- ถ้าใช้ image poonlap/odoo-th:12.0 จะสามารถใช้โมดูล l10n_thailand ได้ทั้งหมด รันคอนเทนเนอร์แล้ว ไปที่ Apps ลบ filter แล้วพิมพ์ thai เพื่อหาโมดูลทั้งหมดของไทย แลติดตั้ง. 
+- ถ้าใช้ image poonlap/odoo-th:13.0 ตอนนี้ใช้ได้เฉพาะ l10n_thailand_partner เท่านั้น
+![](https://raw.githubusercontent.com/poonlap/images/master/odoo12_l10nth.png)
+
 
 ## โมดูล l10n_thailand_partner
 ข้อมูลสาขาสำหรับบริษัทไทย
