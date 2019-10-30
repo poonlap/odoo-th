@@ -76,3 +76,69 @@ Creating temp_web_1 ... done
 ข้อมูลสาขาสำหรับบริษัทไทย
 
 ![](https://raw.githubusercontent.com/poonlap/images/master/branch.png)
+
+# วิธี upgrade Odoo จาก nightly build
+Docker image ที่สร้างไว้จะเป็นรุ่นตอนที่ build image ไว้ เช่น ถ้า docker odoo ออก image มาวัน 2019-10-22 ตัว Odoo ก็จะมาจาก [nightly build](https://nightly.odoo.com/) ของวันนั้น. เช่น Odoo 12 ที่รันจาก docker-compose ตามตัวอย่าง
+
+```
+$ docker-compose up
+...
+db_1   | 2019-10-30 08:25:52.304 UTC [52] LOG:  database system was shut down at 2019-10-30 08:25:52 UTC
+db_1   | 2019-10-30 08:25:52.307 UTC [1] LOG:  database system is ready to accept connections
+web_1  | 2019-10-30 15:25:52,549 1 INFO ? odoo: Odoo version 12.0-20191022
+...
+```
+สมมติว่าเราต้องการ upgrade จาก 12.0-20191022 เป็นวันนี้. ต้องหา container id รัน docker exec และ docker commit ตามตัวอย่าง
+```
+$ docker ps
+CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                              NAMES
+479e50b12368        poonlap/odoo-th:12.0   "/entrypoint.sh odoo"    26 minutes ago      Up 8 minutes        0.0.0.0:8069->8069/tcp, 8071/tcp   temp_web_1
+c05c1d4033d7        postgres:10            "docker-entrypoint.s…"   26 minutes ago      Up 8 minutes        5432/tcp                           temp_db_1
+$ docker exec --user 0 47 apt-get update
+Hit:1 http://deb.nodesource.com/node_8.x stretch InRelease
+Hit:2 http://security-cdn.debian.org/debian-security stretch/updates InRelease
+Ign:3 http://cdn-fastly.deb.debian.org/debian stretch InRelease
+Hit:4 http://cdn-fastly.deb.debian.org/debian stretch-updates InRelease
+Hit:5 http://cdn-fastly.deb.debian.org/debian stretch-backports InRelease
+Hit:6 http://cdn-fastly.deb.debian.org/debian stretch Release
+Ign:8 http://nightly.odoo.com/12.0/nightly/deb ./ InRelease
+Get:9 http://nightly.odoo.com/12.0/nightly/deb ./ Release [1186 B]
+Hit:10 http://apt.postgresql.org/pub/repos/apt stretch-pgdg InRelease
+Get:11 http://nightly.odoo.com/12.0/nightly/deb ./ Release.gpg [819 B]
+Get:12 http://nightly.odoo.com/12.0/nightly/deb ./ Packages [1892 B]
+Fetched 3897 B in 3s (1000 B/s)
+Reading package lists...
+$ docker exec --user 0 47 apt-get -y upgrade odoo
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following package was automatically installed and is no longer required:
+  libuv1
+Use 'apt autoremove' to remove it.
+The following packages will be upgraded:
+  odoo
+1 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 51.8 MB of archives.
+After this operation, 1635 kB of additional disk space will be used.
+Get:1 http://nightly.odoo.com/12.0/nightly/deb ./ odoo 12.0.20191030 [51.8 MB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 51.8 MB in 23s (2160 kB/s)
+(Reading database ... 45816 files and directories currently installed.)
+Preparing to unpack .../odoo_12.0.20191030_all.deb ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of stop.
+Unpacking odoo (12.0.20191030) over (12.0.20191022) ...
+Setting up odoo (12.0.20191030) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+$ docker commit 47 poonlap/odoo-th:12.0.20191030
+sha256:a181cf602f114b3fe48967abbf6810a6d5b9105100a97b86d2483be27e2327c1
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+poonlap/odoo-th     12.0.20191030       a181cf602f11        7 minutes ago       1.83GB
+poonlap/odoo-th     12.0                d5e0e7e33bb1        4 hours ago         1.33GB
+postgres            10                  9a05a2b9e69f        13 days ago         211MB
+```
+แล้วจะได้ image ที่ tag เป็นตัวใหม่ เช่นในตัวอย่าง poonlap/odoo-th:12.0.20191030.
+แก้ไฟล์ docker-compose ให้ใช้ image poonlap/odoo-th:12.0.20191030 ก็จะได้ Odoo เวอร์ชั่นใหม่.
