@@ -2,7 +2,8 @@
 Docker image ที่ใช้งาน Odoo 13 หรือ Odoo 12 ได้ทันที โดยรวม
 - ฟอนต์ภาษาไทย [Laksaman (Sarabun)](https://thep.blogspot.com/2014/07/laksaman-font.html) สำหรับแสดงผลภาษาไทยเวลาพิมพ์เอกสาร PDF
 - [OCA l10n-thailand module](https://github.com/OCA/l10n-thailand)
-  ขณะนี้ยังเป็น version 12 นำมาใช้กับเวอร์ชั่น 13 ได้ 1 โมดูลคือ l10n_th_partner (เพิ่ม field สาขาสำหรับบริษัท) ส่วนโมดูลอื่นๆรออัพเกรดให้ใช้ได้กับเวอร์ชั่น 13 ถ้า build image สำหรับ version 12 ก็จะใช้โมดูล l10n-thailand ได้ทั้งหมดและได้รวมโมดูลที่จำเป็นอื่นๆจาก OCA ไว้แล้ว
+  - Version 12 ใช้โมดูล l10n-thailand ได้ทั้งหมด 
+  - Version 13 ณ ขณะนี้ ยังไม่มี version 13 แต่นำโมดูล l10n_th_partner มาใช้ได้ 1 ตัว
 - [OCA web modules](https://github.com/OCA/web) ที่ใช้ได้กับเวอร์ชั่น 13 แล้ว เช่น web responsive
 
 [Dockerfile](https://github.com/poonlap/odoo-th/blob/master/Dockerfile) ใช้ base มาจาก [Oddo Official](https://hub.docker.com/_/odoo) มีการเพิ่ม Odoo repository ไว้สำหรับ upgrade version ตาม nightly build ของแต่ละวันลงใน image (local) ได้ด้วย
@@ -13,9 +14,13 @@ Docker image ที่ใช้งาน Odoo 13 หรือ Odoo 12 ได้�
 ```
 $ docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=postgres --name db postgres:10
 ```
-### รัน Odoo คอนเทนเนอร์
+### รัน Odoo 13 คอนเทนเนอร์
 ```
-$ docker run -p 8069:8069 --name odoo --link db:db -t poonlap/odoo-th
+$ docker run -p 8069:8069 --name odoo --link db:db -t poonlap/odoo-th:13.0
+```
+### รัน Odoo 12 คอนเทนเนอร์
+```
+$ docker run -p 8069:8069 --name odoo --link db:db -t poonlap/odoo-th:12.0
 ```
 
 ## รันด้วย docker-compose (สำหรับใช้งานจริงจัง)
@@ -24,7 +29,7 @@ $ docker run -p 8069:8069 --name odoo --link db:db -t poonlap/odoo-th
 version: '2'
 services:
   web:
-    image: poonlap/odoo-th
+    image: poonlap/odoo-th:13.0
     depends_on:
       - db
     ports:
