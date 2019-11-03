@@ -33,7 +33,7 @@ RUN if [ ${VERSION} = 13.0  ] || [ ${VERSION} = 'latest' ]; then l10n_th_v='12.0
 RUN pip3 install num2words xlwt xlrd openpyxl --no-cache-dir 
 
 
-COPY ./odoo-12.0.conf /etc/odoo/
+COPY ./odoo-12.0.conf ./odoo.conf /etc/odoo/
 RUN if [ ${VERSION} = 12.0 ]; then mv -v /etc/odoo/odoo-12.0.conf /etc/odoo/odoo.conf; fi \
 	&& chown odoo /etc/odoo/odoo.conf
 
