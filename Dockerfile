@@ -33,28 +33,8 @@ RUN if [ ${VERSION} = 13.0  ] || [ ${VERSION} = 'latest' ]; then l10n_th_v='12.0
 RUN pip3 install num2words xlwt xlrd openpyxl --no-cache-dir 
 
 
-# Copy entrypoint script and Odoo configuration file
-COPY ./entrypoint.sh /
-RUN chmod +x /entrypoint.sh
-COPY ./odoo.conf /etc/odoo/
 COPY ./odoo-12.0.conf /etc/odoo/
-RUN if [ ${VERSION} = 12.0 ]; then mv -v /etc/odoo/odoo-12.0.conf /etc/odoo/odoo.conf; fi
-RUN chown odoo /etc/odoo/odoo.conf
+RUN if [ ${VERSION} = 12.0 ]; then mv -v /etc/odoo/odoo-12.0.conf /etc/odoo/odoo.conf; fi \
+	&& chown odoo /etc/odoo/odoo.conf
 
-# Mount /var/lib/odoo to allow restoring filestore and /mnt/extra-addons for users addons
-RUN mkdir -p /mnt/extra-addons \
-        && chown -R odoo /mnt/extra-addons
-	VOLUME ["/var/lib/odoo", "/mnt/extra-addons"]
-
-# Expose Odoo services
-EXPOSE 8069 8071
-
-
-# Set the default config file
-ENV ODOO_RC /etc/odoo/odoo.conf
-
-# Set default user when running the container
 USER odoo
-
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["odoo"]
