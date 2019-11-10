@@ -2,8 +2,6 @@
 Docker image ที่ใช้งาน Odoo 13 หรือ Odoo 12 ได้ทันที โดยรวม
 - ฟอนต์ภาษาไทย [Laksaman (Sarabun)](https://thep.blogspot.com/2014/07/laksaman-font.html) สำหรับแสดงผลภาษาไทยเวลาพิมพ์เอกสาร PDF
 - [OCA l10n-thailand module](https://github.com/OCA/l10n-thailand)
-  - Version 12 ใช้โมดูล l10n-thailand ได้ทั้งหมด 
-  - Version 13 ณ ขณะนี้ ยังไม่มี version 13 แต่นำโมดูล l10n_th_partner มาใช้ได้ 1 ตัว
 - [OCA web modules](https://github.com/OCA/web) ที่ใช้ได้กับเวอร์ชั่น 13 แล้ว เช่น web responsive
 
 [Dockerfile](https://github.com/poonlap/odoo-th/blob/master/Dockerfile) ใช้ base มาจาก [Odoo Official](https://hub.docker.com/_/odoo) มีการเพิ่ม Odoo repository ไว้สำหรับ upgrade version ตาม nightly build ของแต่ละวันลงใน image (local) ได้ด้วย
