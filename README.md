@@ -2,6 +2,10 @@
 - [แนะนำ docker image สำหรับ Odoo](#นี่คืออะไร)
 - [Tag ที่ใช้ได้](#Tag-ที่ใช้ได้)
   - [การสร้าง docker image](#การสร้าง-docker-image)
+- [ตัวอย่างการใช้](#ใช้อย่างไร)
+- [ตัวอย่างหน้าจอ](#ทดสอบ)
+- [วิธี upgrade odoo ใน container](#วิธี-upgrade-Odoo-จาก-nightly-build)
+- [ใช้ odoo docker พัฒนาโมดูล](#ใช้-odoo-docker-พัฒนาโมดูล)
 
 # นี่คืออะไร
 Docker image ที่ใช้งาน Odoo 13 หรือ Odoo 12 ได้ทันที โดยรวม
