@@ -55,12 +55,12 @@ $ docker run -p 8069:8069 --name odoo12 --link db:db -t poonlap/odoo-th:12.0
 ```
 
 ## รันด้วย docker-compose (สำหรับใช้งานจริงจัง)
-สร้างไฟล์ docker-compose.yml ตัวอย่างเป็น Odoo 12.0
+สร้างไฟล์ docker-compose.yml
 ```
 version: '2'
 services:
   web:
-    image: poonlap/odoo-th:12.0
+    image: poonlap/odoo-th:latest
     depends_on:
       - db
     ports:
@@ -88,12 +88,10 @@ Creating temp_web_1 ... done
 เปิดเบราเซอร์ เข้า http://localhost:8069
 
 # ทดสอบ 
-## โมดูล l10n_thailand ทั้งหมด
-- ถ้าใช้ image poonlap/odoo-th:12.0 จะสามารถใช้โมดูล l10n_thailand ได้ทั้งหมด รันคอนเทนเนอร์แล้ว ไปที่ Apps ลบ filter แล้วพิมพ์ thai เพื่อหาโมดูลทั้งหมดของไทย และติดตั้ง. โมดูลอื่นๆของ OCA ที่จำเป็นที่ l10n_thailand ใช้จะติดตั้งอัตโนมัติตามไปด้วย เช่น [server-tools](https://github.com/OCA/server-tools) เป็นต้น.
-- ถ้าใช้ image poonlap/odoo-th:13.0 ตอนนี้ใช้ได้เฉพาะ l10n_thailand_partner เท่านั้น
+## โมดูล l10n_thailand
+- ไปที่ Apps ลบ filter แล้วพิมพ์ thai เพื่อหาโมดูลทั้งหมดของไทย และติดตั้ง. 
 
-![](https://raw.githubusercontent.com/poonlap/images/master/odoo12_l10nth.png)
-
+![](https://raw.githubusercontent.com/poonlap/images/master/odoo13_l10nth.png)
 ![](https://raw.githubusercontent.com/poonlap/images/master/l10n_thailand.png)
 
 ## PDF ภาษาไทย
@@ -171,3 +169,64 @@ postgres            10                  9a05a2b9e69f        13 days ago         
 ```
 แล้วจะได้ image ที่ tag เป็นตัวใหม่ เช่นในตัวอย่าง poonlap/odoo-th:12.0.20191030.
 แก้ไฟล์ docker-compose ให้ใช้ image poonlap/odoo-th:12.0.20191030 ก็จะได้ Odoo เวอร์ชั่นใหม่.
+
+# ใช้ odoo docker พัฒนาโมดูล
+## เตรียมไฟล์ docker-compose.yml
+ใน image docker มี python watchdog อยู่แล้ว และใน docker-compose.yml ใช้ตัวเลือก --dev=all มีผลให้เวลา edit ไฟล์ในโมดูลแก้ไข odoo จะ restart โดยอัตโนมัติ
+```
+version: '2'
+services:
+  web:
+    image: poonlap/odoo-th:latest
+    command: -- --dev=all
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - ./addons:/mnt/extra-addons
+      - ./config:/etc/odoo
+      - odoo-web:/var/lib/odoo
+  db:
+    image: postgres:10
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
+volumes:
+  odoo-db-data:
+  odoo-web:
+```
+
+```
+$ docker-composer up -d
+...
+web_1  | 2019-12-01 22:27:57,232 1 INFO ? odoo: database: odoo@db:5432
+web_1  | 2019-12-01 22:27:57,366 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf
+web_1  | 2019-12-01 22:27:57,436 1 INFO ? odoo.service.server: Watching addons folder /usr/lib/python3/dist-packages/odoo/addons
+web_1  | 2019-12-01 22:27:57,436 1 INFO ? odoo.service.server: Watching addons folder /var/lib/odoo/addons/13.0
+web_1  | 2019-12-01 22:27:57,436 1 INFO ? odoo.service.server: Watching addons folder /mnt/extra-addons
+web_1  | 2019-12-01 22:27:57,436 1 INFO ? odoo.service.server: Watching addons folder /opt/odoo/addons/web
+web_1  | 2019-12-01 22:27:57,436 1 INFO ? odoo.service.server: Watching addons folder /mnt/extra-addons/l10n-thailand
+web_1  | 2019-12-01 22:27:57,625 1 INFO ? odoo.service.server: AutoReload watcher running with watchdog
+web_1  | 2019-12-01 22:27:57,633 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 6329d67008d4:8069
+...
+```
+
+## สร้าง scraffold
+หา container ID ของ odoo ที่รันจาก docker-compose 
+```
+$ docker ps
+CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                              NAMES
+6329d67008d4        poonlap/odoo-th:latest   "/entrypoint.sh -- -…"   17 minutes ago      Up 8 minutes        0.0.0.0:8069->8069/tcp, 8071/tcp   run_web_1
+51a778ba4e1c        postgres:10              "docker-entrypoint.s…"   17 minutes ago      Up 8 minutes        5432/tcp                           run_db_1
+```
+ตัวอย่าง เช่น container ID เป็น 6329d67008d4
+```
+$ docker exec --user 0 63 odoo scaffold mymodule /mnt/extra-addons
+$ ls addons/mymodule/
+__init__.py  __manifest__.py  controllers/  demo/  models/  security/  views/
+```
+ก็จะได้โฟลเดอร์ mymodule อยู่ใน extra-addons ซึ่งจะไปอยู่ในโฟลเดอร์ addons ที่กำหนดไว้ใน docker-composer.yml นั่นเอง.
