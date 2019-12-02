@@ -224,7 +224,7 @@ web_1  | 2019-12-01 22:27:57,633 1 INFO ? odoo.service.server: HTTP service (wer
 ...
 ```
 
-## สร้าง scraffold
+## สร้าง scaffold
 หา container ID ของ odoo ที่รันจาก docker-compose 
 ```
 $ docker ps
