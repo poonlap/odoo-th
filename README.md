@@ -246,4 +246,4 @@ OCA Repository [partner-contact](https://github.com/OCA/partner-contact) มี�
 
 ## ติดตั้งโมดูล base_locatopm_geonames_import
 ใน docker image odoo-th เตรียมโมดูลนี้ไว้แล้ว สามารถติดตั้งได้เลย
-!()[https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/app_geoname.png]
+![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/app_geoname.png)
