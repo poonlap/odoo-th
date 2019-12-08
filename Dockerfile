@@ -23,7 +23,8 @@ RUN mkdir -p /opt/odoo/addons \
 	&& if [ ${VERSION} = 12.0 ]; then git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/server-tools.git; \
 	   git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/server-ux.git; \
 	   git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/reporting-engine.git; fi \
-        && git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/web.git 
+        && git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/web.git \
+	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/partner-contact.git
 
 RUN pip3 install num2words xlwt xlrd openpyxl --no-cache-dir 
 

@@ -6,7 +6,7 @@
 - The TH.txt was prepared to the same format as
 https://download.geonames.org/export/zip/
 
-# How to use the data
+## How to use the data
 1. Install the module "Base Location Geonames Import".
 https://github.com/OCA/partner-contact/tree/13.0/base_location_geonames_import
 
@@ -19,3 +19,12 @@ https://github.com/poonlap/odoo-th/raw/master/data/%s.zip
 5. Select country "Thailand" (ประเทศไทย) and import.
 
 After then you can easily input the address by zip code or city name.
+
+# Data for provinces, cities, postcodes in English.
+The data from geonames.org is outdated. There is no information of Bung kan which separated from Nong Kai. You can set geonames.url to
+```
+https://github.com/poonlap/odoo-th/raw/master/data/%s_EN.zip
+```
+and import the geonames in English for Thailand. 
+
+To avoid conflicted with Thai language, I added a suffix "_en" to the ID names.
