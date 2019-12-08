@@ -244,7 +244,6 @@ __init__.py  __manifest__.py  controllers/  demo/  models/  security/  views/
 # ชื่อจังหวัด, เขต/อำเภอ, รหัสไปรษณีย์ของไทย
 OCA Repository [partner-contact](https://github.com/OCA/partner-contact) มีโมดูล base_location กับ base_location_geonames_import ซึ่งสามารถใช้กรอกอำเภอจังหวัดได้โดยอัตโนมัติ.
 
-## ติดตั้งโมดูล base_locatopm_geonames_import
 ใน docker image odoo-th เตรียมโมดูลนี้ไว้แล้ว สามารถติดตั้งได้เลย
 
 ![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/app_geoname.png)
@@ -259,3 +258,19 @@ https://github.com/poonlap/odoo-th/raw/master/data/%s.zip
 ```
 
 ![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geonames.url.png)
+
+ไปที่ รายชื่อ > การกำหนดค่า > Import from Geonames แล้วเลือก ประเทศไทย กด import
+
+![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geoname_import.png)
+
+หนังจากนั้นจะมีชื่อจังหวัด, อำเภอ และรหัสไปรษณีย์ในระบบ.
+
+![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geoname_country.png)
+
+![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geoname_city.png)
+
+![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geoname_zip.png)
+
+ตอนสร้างชื่อลูกค้าสามารถให้โมดูลนี้เติมข้อมูลอัตโนมัติได้
+
+![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geoname_completion.png)
