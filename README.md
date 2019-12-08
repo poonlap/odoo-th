@@ -239,3 +239,11 @@ $ ls addons/mymodule/
 __init__.py  __manifest__.py  controllers/  demo/  models/  security/  views/
 ```
 ก็จะได้โฟลเดอร์ mymodule อยู่ใน extra-addons ซึ่งจะไปอยู่ในโฟลเดอร์ addons ที่กำหนดไว้ใน docker-composer.yml นั่นเอง.
+
+
+# ชื่อจังหวัด, เขต/อำเภอ, รหัสไปรษณีย์ของไทย
+OCA Repository [partner-contact](https://github.com/OCA/partner-contact) มีโมดูล base_location กับ base_location_geonames_import ซึ่งสามารถใช้กรอกอำเภอจังหวัดได้โดยอัตโนมัติ.
+
+## ติดตั้งโมดูล base_locatopm_geonames_import
+ใน docker image odoo-th เตรียมโมดูลนี้ไว้แล้ว สามารถติดตั้งได้เลย
+[[https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/app_geoname.png]]
