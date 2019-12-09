@@ -9,11 +9,11 @@
 - th/TH.txt  
 เป็นไฟล์ CSV ขั้นด้วย TAB โดยเตรียมจากไฟล์ที่ดาวน์โหลดมากจากข้อมูลของ[ธนาคารแห่งประเทศไทย](https://www.bot.or.th/Thai/Statistics/DataManagementSystem/Standard/StandardCode/Pages/default.aspx) ใช้ข้อมูล "ตำบล อำเภอ" เป็น 1 สถานที่.
 - th/TH.zip  
-ไฟล์ zip ข้างในมี TH.txt อยู่ สำหรับให้โมดูล Base Location Geonames Import เรียกใช้
+ไฟล์ zip ข้างในมี TH.txt อยู่ สำหรับให้โมดูล [Base Location Geonames Import](https://github.com/OCA/partner-contact/tree/13.0/base_location_geonames_import) เรียกใช้
 - en/TH.txt  
 เป็นไฟล์ CSV ขั้นด้วย TAB จาก geonames.org โดยแก้ไขข้อมูลให้ถูกต้อง โดยเฉพาะของจังหวัดบึงกาฬ. 1 อำเภอเป็น 1 สถานที่.
 - en/TH.zip
-ไฟล์ zip ข้างในมี TH.txt อยู่ สำหรับให้โมดูล Base Location Geonames Import เรียกใช้ กรณีต้องการข้อมูลเป็นภาษาอังกฤษ.
+ไฟล์ zip ข้างในมี TH.txt อยู่ สำหรับให้โมดูล [Base Location Geonames Import](https://github.com/OCA/partner-contact/tree/13.0/base_location_geonames_import) เรียกใช้ กรณีต้องการข้อมูลเป็นภาษาอังกฤษ.
 
 # วิธีการใช้ข้อมูล
 1. ติดตั้งโมดูล "Base Location Geonames Import".  
