@@ -1,4 +1,4 @@
-# ข้อมูลรหัสไปรษณีย์, ตำบล, อำเภอ และจังหวัด
+# ข้อมูลรหัสไปรษณีย์, ตำบล, อำเภอ และจังหวัด ของประเทศไทย
 แบ่งเป็น 2 โฟลเดอร์คือ
 1. โฟลเดอร์ th ข้อมูลเป็นภาษาไทย  
 ข้อมูลต้นฉบับดาวน์โหลดได้จาก https://www.bot.or.th/Thai/Statistics/DataManagementSystem/Standard/StandardCode/Pages/default.aspx
