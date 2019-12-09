@@ -6,7 +6,7 @@
 ข้อมูลต้นฉบับดาวน์โหลดได้จาก https://download.geonames.org/export/zip/ 
 
 # ไฟล์
--th/TH.txt  
+- th/TH.txt  
 เป็นไฟล์ CSV ขั้นด้วย TAB โดยเตรียมจากไฟล์ที่ดาวน์โหลดมากจากข้อมูลของ[ธนาคารแห่งประเทศไทย](https://www.bot.or.th/Thai/Statistics/DataManagementSystem/Standard/StandardCode/Pages/default.aspx) ใช้ข้อมูล "ตำบล อำเภอ" เป็น 1 สถานที่.
 - th/TH.zip  
 ไฟล์ zip ข้างในมี TH.txt อยู่ สำหรับให้โมดูล Base Location Geonames Import เรียกใช้
