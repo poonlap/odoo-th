@@ -6,7 +6,7 @@
 - [ตัวอย่างหน้าจอ](#ทดสอบ)
 - [วิธี upgrade odoo ใน container](#วิธี-upgrade-Odoo-จาก-nightly-build)
 - [ใช้ odoo docker พัฒนาโมดูล](#ใช้-odoo-docker-พัฒนาโมดูล)
-- [ชื่อจังหวัด, เขต/อำเภอ, รหัสไปรษณีย์ของไทย](#ชื่อจังหวัด,-เขต/อำเภอ,-รหัสไปรษณีย์ของไทย)
+- [ชื่อจังหวัด, เขต/อำเภอ, รหัสไปรษณีย์ของไทย](#ชื่อจังหวัด-อำเภอ-ตำบล-รหัสไปรษณีย์ของไทย)
 
 # นี่คืออะไร
 Docker image ที่ใช้งาน Odoo 13 หรือ Odoo 12 ได้ทันที โดยรวม
@@ -242,7 +242,7 @@ __init__.py  __manifest__.py  controllers/  demo/  models/  security/  views/
 ก็จะได้โฟลเดอร์ mymodule อยู่ใน extra-addons ซึ่งจะไปอยู่ในโฟลเดอร์ addons ที่กำหนดไว้ใน docker-composer.yml นั่นเอง.
 
 
-# ชื่อจังหวัด, เขต/อำเภอ, รหัสไปรษณีย์ของไทย
+# ชื่อจังหวัด อำเภอ ตำบล รหัสไปรษณีย์ของไทย
 OCA Repository [partner-contact](https://github.com/OCA/partner-contact) มีโมดูล base_location กับ base_location_geonames_import ซึ่งสามารถใช้กรอกอำเภอจังหวัดได้โดยอัตโนมัติ.
 
 ใน docker image odoo-th เตรียมโมดูลนี้ไว้แล้ว สามารถติดตั้งได้เลย
