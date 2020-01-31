@@ -255,7 +255,7 @@ geonames.url
 ```
 ให้มีค่าเป็น
 ```
-https://github.com/poonlap/odoo-th/raw/master/data/%s.zip
+https://github.com/poonlap/odoo-th/raw/master/data/th/%s.zip
 ```
 
 ![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geonames.url.png)
