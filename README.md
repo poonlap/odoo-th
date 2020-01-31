@@ -275,3 +275,10 @@ https://github.com/poonlap/odoo-th/raw/master/data/th/%s.zip
 ตอนสร้างชื่อลูกค้าสามารถให้โมดูลนี้เติมข้อมูลอัตโนมัติได้
 
 ![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geoname_completion.png)
+
+เนื่องจากข้อมูลใน geoname ที่เตรียไว้จะเป็นระดับ "ตำบล อำเภอ" ระบบจะเติม "ตำบล อำเภอ" ไว้ในช่อง city ให้. ตอนนี้ยังไม่มีวิธีที่จะเอาตำบลไปเติมในช่อง address2 จึงต้อง cut and paste ไปแปะเอง
+
+![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geoname_completion-1.png)
+
+![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geoname_completion-2.png)
+
