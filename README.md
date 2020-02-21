@@ -15,9 +15,9 @@ Docker image ที่ใช้งาน Odoo 13 หรือ Odoo 12 ได้�
 - [OCA web modules](https://github.com/OCA/web) ที่ใช้ได้กับเวอร์ชั่น 13 แล้ว เช่น web responsive
 
 ## OCA l10n-thailand v.13
-- [l10n_th_partner](https://github.com/OCA/l10n-thailand/tree/13.0/l10n_th_partner)
-- [l10n_th_withholding_tax_cert](https://github.com/OCA/l10n-thailand/tree/13.0/l10n_th_withholding_tax_cert)
-- [l10n_th_withholding_tax_cert_form](https://github.com/OCA/l10n-thailand/tree/13.0/l10n_th_withholding_tax_cert_form)
+โมดูลต่างของ OCA l10n-thailand ณ วันที่ 22 ก.พ. 63.
+
+![](https://raw.githubusercontent.com/poonlap/odoo-th.wiki/master/images/odoo13_l10nth.png)
 
 [Dockerfile](https://github.com/poonlap/odoo-th/blob/master/Dockerfile) ใช้ base มาจาก [Odoo Official](https://hub.docker.com/_/odoo) มีการเพิ่ม Odoo repository ไว้สำหรับ upgrade version ตาม nightly build ของแต่ละวันลงใน image (local) ได้ด้วย
 
