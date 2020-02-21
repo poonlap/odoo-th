@@ -17,7 +17,7 @@ Docker image ที่ใช้งาน Odoo 13 หรือ Odoo 12 ได้�
 ## OCA l10n-thailand v.13
 โมดูลต่างของ OCA l10n-thailand ณ วันที่ 22 ก.พ. 63.
 
-![](https://raw.githubusercontent.com/poonlap/odoo-th.wiki/master/images/odoo13_l10nth.png)
+![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/oca_thailand.png))
 
 [Dockerfile](https://github.com/poonlap/odoo-th/blob/master/Dockerfile) ใช้ base มาจาก [Odoo Official](https://hub.docker.com/_/odoo) มีการเพิ่ม Odoo repository ไว้สำหรับ upgrade version ตาม nightly build ของแต่ละวันลงใน image (local) ได้ด้วย
 
