@@ -243,6 +243,7 @@ __init__.py  __manifest__.py  controllers/  demo/  models/  security/  views/
 
 
 # ชื่อจังหวัด อำเภอ ตำบล รหัสไปรษณีย์ของไทย
+[Update: Mar 30, 2020] ใช้โมดูล [l10n_th_base_location](https://github.com/OCA/l10n-thailand/tree/13.0/l10n_th_base_location) แทนได้เลย.
 OCA Repository [partner-contact](https://github.com/OCA/partner-contact) มีโมดูล base_location กับ base_location_geonames_import ซึ่งสามารถใช้กรอกอำเภอจังหวัดได้โดยอัตโนมัติ.
 
 ใน docker image odoo-th เตรียมโมดูลนี้ไว้แล้ว สามารถติดตั้งได้เลย
