@@ -28,7 +28,7 @@ TH	10260	Bang Na	Bangkok	10_en					13.6667	100.5833	4
 TH	10300	Dusit	Bangkok	10_en					13.7833	100.5167	4
 TH	10310	Wangthong Lang	Bangkok	10_en					13.7833	100.5167	
 TH	10320	Huai Khwang	Bangkok	10_en					13.7833	100.5167	
-TH	10330	Pahtum Wan	Bangkok	10_en					13.7833	100.5167	
+TH	10330	Pathum Wan	Bangkok	10_en					13.7833	100.5167	
 TH	10400	Ding Daeng	Bangkok	10_en					13.7625	100.531	
 TH	10400	Phaya Thai	Bangkok	10_en					13.7625	100.531	
 TH	10500	Bang Rak	Bangkok	10_en					13.7333	100.5333	4
