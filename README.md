@@ -9,13 +9,16 @@
 - [ชื่อจังหวัด, เขต/อำเภอ, รหัสไปรษณีย์ของไทย](#ชื่อจังหวัด-อำเภอ-ตำบล-รหัสไปรษณีย์ของไทย)
 
 # นี่คืออะไร
-Docker image ที่ใช้งาน Odoo 13 หรือ Odoo 12 ได้ทันที โดยรวม
+Docker image ที่ใช้งาน Odoo 14, 13 หรือ Odoo 12 ได้ทันที โดยรวม
 - ฟอนต์ภาษาไทย [Laksaman (Sarabun)](https://thep.blogspot.com/2014/07/laksaman-font.html) สำหรับแสดงผลภาษาไทยเวลาพิมพ์เอกสาร PDF
 - [OCA l10n-thailand module](https://github.com/OCA/l10n-thailand)
-- [OCA web modules](https://github.com/OCA/web) ที่ใช้ได้กับเวอร์ชั่น 13 แล้ว เช่น web responsive
+- [OCA web modules](https://github.com/OCA/web) 
+- [OCA partner and contact management modules](https://github.com/OCA/partner-contact)
+- [OCA Server UX](https://github.com/OCA/server-ux/) สำหรับ [date_range](https://github.com/OCA/server-ux/tree/13.0/date_range)
+- [OCA alternative reporting engines and reporting utilities ](https://github.com/OCA/reporting-engine/)
 
 ## OCA l10n-thailand v.13
-โมดูลต่างของ OCA l10n-thailand ณ วันที่ 22 ก.พ. 63.
+โมดูลต่างของ OCA l10n-thailand
 
 ![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/oca_thailand.png))
 
@@ -30,16 +33,25 @@ Docker image ที่ใช้งาน Odoo 13 หรือ Odoo 12 ได้�
 จึงทำ docker image ที่สามารถรันได้เลย สำหรับใช้ทดสอบ, หรือใช้งานจริงก็ได้ โดย base image ดั้งเดิมก็มาจาก   [Odoo Docker official Images](https://hub.docker.com/_/odoo)  คือเป็น image เดียวกันแต่ใส่ทุกอย่างที่อยากใช้มาให้แล้ว.
 
 # Tag ที่ใช้ได้
-- 13.0, latest
+- latest สำหรับรัน Odoo 14.0 รุ่นก่อนออกตัวจริงจาก [Odoo nightly build master](https://nightly.odoo.com/master/nightly/deb/) 
+- 14.0 ตอนนี้ (วันที่ 7 ก.ย. 63) เป็นรุ่น alpha
+- 13.0 
 - 12.0
 ## การสร้าง docker image
 ใช้ --build-arg และระบุ VERSION ตอน build. ถ้าไม่ระบุค่า VERSION จะเป็นเวอร์ชั่น 13.0.
+### Odoo 14
+ถ้า [Odoo docker official image](https://hub.docker.com/_/odoo) ยังไม่ออก 14.0 
+```
+$ docker build -t poonlap/odoo-th:latest .
+```
+ถ้า [Odoo docker official image](https://hub.docker.com/_/odoo) ออก 14.0 แล้ว ให้ใช้
+```
+$ docker build --build-arg VERSION=14.0 -t poonlap/odoo-th:14.0 .
+```
 ### Odoo 13
 ```
 $ ls
 Dockerfile
-$ docker build -t poonlap/odoo-th:latest .
-หรือ
 $ docker build --build-arg VERSION=13.0 -t poonlap/odoo-th:13.0 .
 ```
 ### Odoo 12
