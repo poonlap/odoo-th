@@ -15,7 +15,7 @@ RUN apt-get update \
 
 # Add Odoo Repository for upgrading and commit the image
 RUN curl https://nightly.odoo.com/odoo.key | apt-key add -
-RUN if [ ${VERSION} = 'latest' ]; then echo "deb http://nightly.odoo.com/master/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list; else \
+RUN if [ ${VERSION} = 'latest' ]; then echo "deb http://nightly.odoo.com/14.0/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list; else \
        echo "deb http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list; fi
 
 # Add OCA modules via git
