@@ -29,6 +29,9 @@ RUN mkdir -p /opt/odoo/addons \
     && git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/web.git || git clone --single-branch --branch 13.0 https://github.com/OCA/web.git\
 	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/partner-contact.git || git clone --single-branch --branch 13.0 https://github.com/OCA/partner-contact.git\
 	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/server-ux.git || git clone --single-branch --branch 13.0 https://github.com/OCA/server-ux.git\
+	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/server-brand.git || git clone --single-branch --branch 13.0 https://github.com/OCA/server-brand.git\
+	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/social.git || git clone --single-branch --branch 13.0 https://github.com/OCA/social.git\
+	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/account-financial-reporting  || git clone --single-branch --branch 13.0 https://github.com/OCA/account-financial-reporting \
 	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/reporting-engine.git || git clone --single-branch --branch 13.0 https://github.com/OCA/reporting-engine.git
 
 RUN pip3 install num2words xlwt xlrd openpyxl --no-cache-dir 
