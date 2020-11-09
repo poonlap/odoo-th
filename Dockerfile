@@ -8,7 +8,7 @@ USER root
     
 # Generate locale, set timezone
 RUN apt-get update \
-	&& apt-get -yq install locales tzdata git curl fonts-tlwg-laksaman\
+	&& apt-get -yq install locales tzdata git curl fonts-tlwg-laksaman gcc libpython3-dev\
 	&& sed -i 's/# th_/th_/' /etc/locale.gen \
 	&& locale-gen \
     && cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
@@ -34,7 +34,7 @@ RUN mkdir -p /opt/odoo/addons \
 	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/account-financial-reporting  || git clone --single-branch --branch 13.0 https://github.com/OCA/account-financial-reporting \
 	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/reporting-engine.git || git clone --single-branch --branch 13.0 https://github.com/OCA/reporting-engine.git
 
-RUN pip3 install num2words xlwt xlrd openpyxl --no-cache-dir 
+RUN pip3 install num2words xlwt xlrd openpyxl promptpay --no-cache-dir 
 
 # Upgrade Odoo to the latest 13.0 nightly build when VERSION=13.0 (the current docker odoo official)
 # Upgrade Odoo to 14.0 nightly build when VERSION=latest (master/nightly)
