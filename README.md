@@ -1,5 +1,5 @@
 # สารบัญ
-- [แนะนำ docker image สำหรับ Odoo](#นี่คืออะไร)
+- [docker image สำหรับ Odoo](#นี่คืออะไร)
 - [Tag ที่ใช้ได้](#Tag-ที่ใช้ได้)
   - [การสร้าง docker image](#การสร้าง-docker-image)
 - [ตัวอย่างการใช้](#ใช้อย่างไร)
@@ -9,42 +9,34 @@
 - [ชื่อจังหวัด, เขต/อำเภอ, รหัสไปรษณีย์ของไทย](#ชื่อจังหวัด-อำเภอ-ตำบล-รหัสไปรษณีย์ของไทย)
 
 # นี่คืออะไร
-Docker image ที่ใช้งาน Odoo 14, 13 หรือ Odoo 12 ได้ทันที โดยรวม
+Repository นี้เป็น Dockerfile สำหรับสร้าง Docker image ที่ใช้งาน Odoo 14.0 (ปัจจุบันปี 2021) หรือเวอร์ชั่นอื่นๆเช่น 13.0 หรือ Odoo 12.0 ร่วมกับภาษาไทย (Thai localization) ได้ทันที โดยรวม
 - ฟอนต์ภาษาไทย [Laksaman (Sarabun)](https://thep.blogspot.com/2014/07/laksaman-font.html) สำหรับแสดงผลภาษาไทยเวลาพิมพ์เอกสาร PDF
 - [OCA l10n-thailand module](https://github.com/OCA/l10n-thailand)
 - [OCA web modules](https://github.com/OCA/web) 
 - [OCA partner and contact management modules](https://github.com/OCA/partner-contact)
-- [OCA Server UX](https://github.com/OCA/server-ux/) สำหรับ [date_range](https://github.com/OCA/server-ux/tree/13.0/date_range)
+- [OCA Server UX](https://github.com/OCA/server-ux/)
 - [OCA alternative reporting engines and reporting utilities ](https://github.com/OCA/reporting-engine/)
+- [OCA Account reconcile modules ](https://github.com/OCA/account-reconcile) widget reconcile ที่มีในรุ่น 13.0 แต่ไม่มีในรุ่น 14.0
+- [th_address โมดูลที่อยู่ภาษาไทย] (https://github.com/poonlap/th_address) สร้างข้อมูล ตำบล, อำเภอ, จังหวัด พร้อมใช้งาน และใช้ความสามารถ autocompletion ของโมดูล base_location
+- [th_address_vat โมดูลกรอกที่อยู่จากเลข VAT] (https://github.com/poonlap/th_address_vat) หาที่อยู่จาก web service ของกรรมสรรพากรจากเลขประจำตัวผู้เสียภาษี และกรอกที่อยู่ให้อัตโนมัติ ไม่ผิดพลาด
 
-## OCA l10n-thailand v.13
-โมดูลต่างของ OCA l10n-thailand
+[Dockerfile](https://github.com/poonlap/odoo-th/blob/14.0/Dockerfile) ใช้ base มาจาก [Odoo Official](https://hub.docker.com/_/odoo) มีการเพิ่ม Odoo repository ไว้สำหรับ upgrade version ตาม nightly build ของแต่ละวันลงใน image (local) ได้ด้วย
 
-![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/oca_thailand.png))
-
-[Dockerfile](https://github.com/poonlap/odoo-th/blob/master/Dockerfile) ใช้ base มาจาก [Odoo Official](https://hub.docker.com/_/odoo) มีการเพิ่ม Odoo repository ไว้สำหรับ upgrade version ตาม nightly build ของแต่ละวันลงใน image (local) ได้ด้วย
-
-# ทำไมจึงทำ Docker Image ของ Odoo
 ถึงแม้ว่าจะมี  [Odoo Docker official Images](https://hub.docker.com/_/odoo) อยู่แล้ว แต่ยังไม่ตอบโจทย์บางอย่าง เช่น 
 - image ไม่ได้ตั้ง timezone เวลารันจะเห็น log ลงเวลาไม่ตรงกับเมืองไทย. 
 - PDF ที่พิมพ์ออกมาไม่มีฟอนต์ภาษาไทย
 - Image ของ official จะมีโมดูล default เท่านั้น ถ้าจะลง OCA l10n_thailand ก็ต้องติดตั้งเอง มี dependency ยุ่งยาก. 
 
-จึงทำ docker image ที่สามารถรันได้เลย สำหรับใช้ทดสอบ, หรือใช้งานจริงก็ได้ โดย base image ดั้งเดิมก็มาจาก   [Odoo Docker official Images](https://hub.docker.com/_/odoo)  คือเป็น image เดียวกันแต่ใส่ทุกอย่างที่อยากใช้มาให้แล้ว.
+จึงทำ docker image ที่สามารถรันได้เลย สำหรับใช้ทดสอบ, หรือใช้งานจริงก็ได้ โดย base image ดั้งเดิมก็มาจาก [Odoo Docker official Images](https://hub.docker.com/_/odoo)  คือเป็น image เดียวกันแต่ใส่ทุกอย่างที่อยากใช้มาให้แล้ว.
 
 # Tag ที่ใช้ได้
 - latest สำหรับรัน Odoo 14.0 รุ่นก่อนออกตัวจริงจาก [Odoo nightly build master](https://nightly.odoo.com/master/nightly/deb/) 
-- 14.0 ตอนนี้ (วันที่ 7 ก.ย. 63) เป็นรุ่น alpha
+- 14.0 
 - 13.0 
 - 12.0
 ## การสร้าง docker image
-ใช้ --build-arg และระบุ VERSION ตอน build. ถ้าไม่ระบุค่า VERSION จะเป็นเวอร์ชั่น 13.0.
+ใช้ --build-arg และระบุ VERSION ตอน build. 
 ### Odoo 14
-ถ้า [Odoo docker official image](https://hub.docker.com/_/odoo) ยังไม่ออก 14.0 
-```
-$ docker build -t poonlap/odoo-th:latest .
-```
-ถ้า [Odoo docker official image](https://hub.docker.com/_/odoo) ออก 14.0 แล้ว ให้ใช้
 ```
 $ docker build --build-arg VERSION=14.0 -t poonlap/odoo-th:14.0 .
 ```
@@ -54,10 +46,6 @@ $ ls
 Dockerfile
 $ docker build --build-arg VERSION=13.0 -t poonlap/odoo-th:13.0 .
 ```
-### Odoo 12
-```
-$ docker build --build-arg VERSION=12.0 -t poonlap/odoo-th:12.0 .
-```
 
 # ใช้อย่างไร
 ## รันด้วย docker (สำหรับทดสอบ)
@@ -66,18 +54,13 @@ $ docker build --build-arg VERSION=12.0 -t poonlap/odoo-th:12.0 .
 $ docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=postgres --name db postgres:10
 ```
 ### รัน Odoo 13 คอนเทนเนอร์
-ใช้อิมเมจ poonlap/odoo-th:13.0 หรือ poonlap/odoo-th:latest หรือ poonlap/odoo-th
+ใช้อิมเมจ poonlap/odoo-th:14.0 หรือ poonlap/odoo-th:latest หรือ poonlap/odoo-th
 ```
-$ docker run -p 8069:8069 --name odoo13 --link db:db -t poonlap/odoo-th:13.0
-```
-### รัน Odoo 12 คอนเทนเนอร์
-ใช้อิมเมจ poonlap/odoo-th:12.0
-```
-$ docker run -p 8069:8069 --name odoo12 --link db:db -t poonlap/odoo-th:12.0
+$ docker run -p 8069:8069 --name odoo13 --link db:db -t poonlap/odoo-th:14.0
 ```
 
-## รันด้วย docker-compose (สำหรับใช้งานจริงจัง)
-สร้างไฟล์ docker-compose.yml
+## รันด้วย docker-compose (สะดวกกว่า)
+ใน repository นี้เตรียมไฟล์ docker-compose.yml ตัวอย่างไว้ให้แล้ว 
 ```
 version: '2'
 services:
@@ -253,43 +236,4 @@ __init__.py  __manifest__.py  controllers/  demo/  models/  security/  views/
 ```
 ก็จะได้โฟลเดอร์ mymodule อยู่ใน extra-addons ซึ่งจะไปอยู่ในโฟลเดอร์ addons ที่กำหนดไว้ใน docker-composer.yml นั่นเอง.
 
-
-# ชื่อจังหวัด อำเภอ ตำบล รหัสไปรษณีย์ของไทย
-[Update: Mar 30, 2020] ใช้โมดูล [l10n_th_base_location](https://github.com/OCA/l10n-thailand/tree/13.0/l10n_th_base_location) แทนได้เลย.
-OCA Repository [partner-contact](https://github.com/OCA/partner-contact) มีโมดูล base_location กับ base_location_geonames_import ซึ่งสามารถใช้กรอกอำเภอจังหวัดได้โดยอัตโนมัติ.
-
-ใน docker image odoo-th เตรียมโมดูลนี้ไว้แล้ว สามารถติดตั้งได้เลย
-
-![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/app_geoname.png)
-
-หลังจากนั้น activate developer mode และไปที่ Settings >  Technical > System Parameters (ตั้งค่า > ทางเทคนิค > พารามิเตอร์ของระบบ) ตั้งตัวแปร(กุญแจ) ใหม่ชื่อ
-```
-geonames.url
-```
-ให้มีค่าเป็น
-```
-https://github.com/poonlap/odoo-th/raw/master/data/th/%s.zip
-```
-
-![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geonames.url.png)
-
-ไปที่ รายชื่อ > การกำหนดค่า > Import from Geonames แล้วเลือก ประเทศไทย กด import
-
-![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geoname_import.png)
-
-หนังจากนั้นจะมีชื่อจังหวัด, อำเภอ และรหัสไปรษณีย์ในระบบ.
-
-![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geoname_country.png)
-
-![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geoname_city.png)
-
-![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geoname_zip.png)
-
-ตอนสร้างชื่อลูกค้าสามารถให้โมดูลนี้เติมข้อมูลอัตโนมัติได้
-
-![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geoname_completion.png)
-<br/>
-![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geoname_completion-2.png)
-<br/>
-![](https://raw.githubusercontent.com/wiki/poonlap/odoo-th/images/geonames.gif)
 
