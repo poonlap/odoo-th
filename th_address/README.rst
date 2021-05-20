@@ -26,6 +26,7 @@ Thai Localization - Thai address data
 * กรณีที่ภาษาหลักที่ใช้ไม่ใช่ภาษาไทย โมดูลนี้จะเพิ่มภาษาไทยเป็นภาษาที่ 2 และนำเข้าคำแปลภาษาไทยในระบบ. 
 * ติดตั้งโมดูล `Base Location Geonames Import <https://github.com/OCA/partner-contact/tree/14.0/base_location_geonames_import>`_ ซึ่งโมดูลนี้จะติดตั้งโมดูล `Location management (aka Better ZIP) <https://github.com/OCA/partner-contact/tree/14.0/base_location>`_ อีกที
 * ตั้งค่า system parameter ``geonames.url`` สำหรับดึงข้อมูล ตำบล, อำเภอ, จังหวัด และรหัสไปรษณีย์ เป็นภาษาไทย. หากต้องการเป็นภาษาอังกฤษ หรือผสมกัน สามารถเปลี่ยนได้ภายหลัง
+* เปลี่ยน form โดยสลับตำแหน่งให้ Location completion ขึ้นมาก่อน street2. เวลาพิมพ์ที่อยู่ ลำดับการกรอกข้อมูลจะเป็นธรรมชาติกว่า คือ บ้านเลขที่, ถนน ใส่ในช่อง street1 ตามด้วย Location completion. ถ้าเลือกตำบลอำเภอเสร็จแล้ว จะกรอกใส่ช่องด้านล่าง ตามลำดับจากด้านบนไปด้านล่าง.
 * ระหว่างติดตั้ง จะนำเข้า (import) ข้อมูล ตำบล, อำเภอ, จังหวัด และรหัสไปรษณีย์ เป็นภาษาไทยอัตโนมัติ. เมื่อติดตั้งโมดูลเสร็จแล้ว ข้อมูลพร้อมใช้งานทันที ลดขั้นตอนการนำเข้าข้อมูลเอง
 
 .. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/14.0/th_address/static/description/data_provinces.png
