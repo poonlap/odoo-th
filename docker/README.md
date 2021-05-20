@@ -17,10 +17,10 @@ Repository นี้เป็น Dockerfile สำหรับสร้าง Do
 - [OCA Server UX](https://github.com/OCA/server-ux/)
 - [OCA alternative reporting engines and reporting utilities ](https://github.com/OCA/reporting-engine/)
 - [OCA Account reconcile modules ](https://github.com/OCA/account-reconcile) widget reconcile ที่มีในรุ่น 13.0 แต่ไม่มีในรุ่น 14.0
-- [th_address โมดูลที่อยู่ภาษาไทย](https://github.com/poonlap/th_address) สร้างข้อมูล ตำบล, อำเภอ, จังหวัด พร้อมใช้งาน และใช้ความสามารถ autocompletion ของโมดูล base_location
-- [th_address_vat โมดูลกรอกที่อยู่จากเลข VAT](https://github.com/poonlap/th_address_vat) หาที่อยู่จาก web service ของกรรมสรรพากรจากเลขประจำตัวผู้เสียภาษี และกรอกที่อยู่ให้อัตโนมัติ ไม่ผิดพลาด
+- [th_address โมดูลที่อยู่ภาษาไทย](https://github.com/poonlap/odoo-th/tree/14.0/th_address) สร้างข้อมูล ตำบล, อำเภอ, จังหวัด พร้อมใช้งาน และใช้ความสามารถ autocompletion ของโมดูล base_location
+- [th_address_vat โมดูลกรอกที่อยู่จากเลข VAT](https://github.com/poonlap/odoo-th/tree/14.0/th_address_vat) หาที่อยู่จาก web service ของกรรมสรรพากรจากเลขประจำตัวผู้เสียภาษี และกรอกที่อยู่ให้อัตโนมัติ ไม่ผิดพลาด
 
-[Dockerfile](https://github.com/poonlap/odoo-th/blob/14.0/Dockerfile) ใช้ base มาจาก [Odoo Official](https://hub.docker.com/_/odoo) มีการเพิ่ม Odoo repository ไว้สำหรับ upgrade version ตาม nightly build ของแต่ละวันลงใน image (local) ได้ด้วย
+[Dockerfile](https://github.com/poonlap/odoo-th/blob/14.0/docker/Dockerfile) ใช้ base มาจาก [Odoo Official](https://hub.docker.com/_/odoo) มีการเพิ่ม Odoo repository ไว้สำหรับ upgrade version ตาม nightly build ของแต่ละวันลงใน image (local) ได้ด้วย
 
 ถึงแม้ว่าจะมี  [Odoo Docker official Images](https://hub.docker.com/_/odoo) อยู่แล้ว แต่ยังไม่ตอบโจทย์บางอย่าง เช่น 
 - image ไม่ได้ตั้ง timezone เวลารันจะเห็น log ลงเวลาไม่ตรงกับเมืองไทย. 
@@ -53,64 +53,53 @@ $ docker build --build-arg VERSION=13.0 -t poonlap/odoo-th:13.0 .
 ```
 $ docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=postgres --name db postgres:10
 ```
-### รัน Odoo 13 คอนเทนเนอร์
+### รัน Odoo คอนเทนเนอร์
 ใช้อิมเมจ poonlap/odoo-th:14.0 หรือ poonlap/odoo-th:latest หรือ poonlap/odoo-th
 ```
-$ docker run -p 8069:8069 --name odoo13 --link db:db -t poonlap/odoo-th:14.0
+$ docker run -p 8069:8069 --name odoo --link db:db -t poonlap/odoo-th:latest
 ```
 
-## รันด้วย docker-compose (สะดวกกว่า)
+## รันด้วย docker-compose (แนะนำ)
 ใน repository นี้เตรียมไฟล์ docker-compose.yml ตัวอย่างไว้ให้แล้ว 
 ```
-version: '2'
-services:
-  web:
-    image: poonlap/odoo-th:latest
-    depends_on:
-      - db
-    ports:
-      - "8069:8069"
-    volumes:
-      - ./addons:/mnt/extra-addons
-  db:
-    image: postgres:10
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=odoo
-      - POSTGRES_USER=odoo
+$ git clone https://github.com/poonlap/odoo-th.git
+$ cd odoo-th/docker
+$ docker-compose up
+
 ```
 จากตัวอย่างจะมีการ mount โฟล์เดอร์ในคอนเทนเนอร์ไปที่ ./addons สามารถเพิ่มโมดูลที่สร้างเองหรือต้องการทดสอบไว้ที่นี่ได้. 
-รัน docker-compose 
-```
-$ ls
-addons/ docker-compose.yml
-$ docker-compose.exe up -d
-Creating temp_db_1 ... done
-Creating temp_web_1 ... done
-```
+
 
 # ทดลองใช้
 เปิดเบราเซอร์ เข้า http://localhost:8069
 
-# ทดสอบ 
+# ตัวอย่าง 
 ## โมดูล l10n_thailand
 - ไปที่ Apps ลบ filter แล้วพิมพ์ thai เพื่อหาโมดูลทั้งหมดของไทย และติดตั้ง. 
+- Odoo 14.0 (ณ เดือนพ.ค. 2021)
 
-![](https://raw.githubusercontent.com/poonlap/images/master/odoo13_l10nth.png)
-![](https://raw.githubusercontent.com/poonlap/images/master/l10n_thailand.png)
+![](https://raw.githubusercontent.com/poonlap/odoo-th/14.0/docker/static/screenshots/apps_v14.png)
+
+- Odoo 13.0 (ณ เดือนพ.ค. 2021)
+
+![](https://raw.githubusercontent.com/poonlap/odoo-th/14.0/docker/static/screenshots/apps_v13.png)
 
 ## PDF ภาษาไทย
 สร้างใบเสนอราคา ตั้งชื่อลูกค้าภาษาไทย สั่งพิมพ์ 
 
-![](https://raw.githubusercontent.com/poonlap/images/master/testpdf.png)
+![](https://raw.githubusercontent.com/poonlap/odoo-th/14.0/docker/static/screenshots/quotation_pdf.png)
 
-## โมดูล l10n_thailand_partner
-ข้อมูลสาขาสำหรับบริษัทไทย
+## ข้อมูลจังหวัด
+![](https://raw.githubusercontent.com/poonlap/odoo-th/14.0/th_address/static/description/data_provinces.png)
 
-![](https://raw.githubusercontent.com/poonlap/images/master/branch.png)
+## ข้อมูลตำบล อำเภอ
+![](https://raw.githubusercontent.com/poonlap/odoo-th/14.0/th_address/static/description/data_cities.png)
+
+## ข้อมูลรหัสไปรษณีย์
+![](https://raw.githubusercontent.com/poonlap/odoo-th/14.0/th_address/static/description/data_zips.png)
 
 # วิธี upgrade Odoo จาก nightly build
-Docker image ที่สร้างไว้จะเป็นรุ่นตอนที่ build image ไว้ เช่น ถ้า docker odoo ออก image มาวัน 2019-10-22 ตัว Odoo ก็จะมาจาก [nightly build](https://nightly.odoo.com/) ของวันนั้น. เช่น Odoo 12 ที่รันจาก docker-compose ตามตัวอย่าง
+Docker image ที่สร้างไว้จะเป็นรุ่นตอนที่ build image ไว้.  เช่น ถ้า docker odoo ออก image มาวัน 2019-10-22 ตัว Odoo ก็จะมาจาก [nightly build](https://nightly.odoo.com/) ของวันนั้น. เช่น Odoo 12 ที่รันจาก docker-compose ตามตัวอย่าง
 
 ```
 $ docker-compose up
@@ -126,7 +115,7 @@ $ docker ps
 CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                              NAMES
 479e50b12368        poonlap/odoo-th:12.0   "/entrypoint.sh odoo"    26 minutes ago      Up 8 minutes        0.0.0.0:8069->8069/tcp, 8071/tcp   temp_web_1
 c05c1d4033d7        postgres:10            "docker-entrypoint.s…"   26 minutes ago      Up 8 minutes        5432/tcp                           temp_db_1
-$ docker exec --user 0 47 apt-get update
+$ docker exec --user 0 479e50b12368 apt-get update
 Hit:1 http://deb.nodesource.com/node_8.x stretch InRelease
 Hit:2 http://security-cdn.debian.org/debian-security stretch/updates InRelease
 Ign:3 http://cdn-fastly.deb.debian.org/debian stretch InRelease
