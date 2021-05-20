@@ -14,7 +14,7 @@ Thai Localization - Thai address data
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-poonlap%2Fodoo--th-lightgray.png?logo=github
-    :target: https://github.com/poonlap/odoo-th/tree/modules/th_address
+    :target: https://github.com/poonlap/odoo-th/tree/14.0/th_address
     :alt: poonlap/odoo-th
 
 |badge1| |badge2| |badge3| 
@@ -28,29 +28,29 @@ Thai Localization - Thai address data
 * ตั้งค่า system parameter ``geonames.url`` สำหรับดึงข้อมูล ตำบล, อำเภอ, จังหวัด และรหัสไปรษณีย์ เป็นภาษาไทย. หากต้องการเป็นภาษาอังกฤษ หรือผสมกัน สามารถเปลี่ยนได้ภายหลัง
 * ระหว่างติดตั้ง จะนำเข้า (import) ข้อมูล ตำบล, อำเภอ, จังหวัด และรหัสไปรษณีย์ เป็นภาษาไทยอัตโนมัติ. เมื่อติดตั้งโมดูลเสร็จแล้ว ข้อมูลพร้อมใช้งานทันที ลดขั้นตอนการนำเข้าข้อมูลเอง
 
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/data_provinces.png
+.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/14.0/th_address/static/description/data_provinces.png
     :alt: ข้อมูลจังหวัด
     :width: 80 %
     :align: center
 
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/data_cities.png
+.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/14.0/th_address/static/description/data_cities.png
     :alt: ข้อมูลตำบลและอำเภอ
     :width: 80 %
     :align: center
 
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/data_zips.png
+.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/14.0/th_address/static/description/data_zips.png
     :alt: ข้อมูลรหัสไปรษณีย์
     :width: 80 %
     :align: center
 
 * เวลาใช้ Location completion ค้นหาที่อยู่ (ตำบล, อำเภอ, จังหวัด, รหัสไปรษณีย์) เมื่อเลือกข้อมูลที่ค้นหาได้แล้ว จะใส่ชื่อตำบลในช่อง Street2 และใส่ชื่ออำเภอในช่อง Ciy ให้อัตโนมัติ
 
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/location_completion_01.png
+.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/14.0/th_address/static/description/location_completion_01.png
     :alt: ค้นหา
     :width: 80 %
     :align: center
 
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/location_completion_02.png
+.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/14.0/th_address/static/description/location_completion_02.png
     :alt: กรอกข้อมูลแยก
     :width: 80 %
     :align: center
@@ -58,7 +58,7 @@ Thai Localization - Thai address data
 * เปลี่ยนค่า ``address_format`` ให้ใช่้ชื่อ จังหวัด ``state_name`` แทน ``state_id`` ที่เป็นค่าตั้งต้น
 * ตั้งค่า Vat Label เป็น Tax ID
 
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/country_setting.png
+.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/14.0/th_address/static/description/country_setting.png
     :alt: address_format และ Vat label
     :width: 80 %
     :align: center
@@ -88,7 +88,7 @@ Usage
 ------------------------
 กรอกชื่อที่อยู่ตามปกติ เมื่อจะเริ่มกรอกตำบลหรือแขวง ให้ไปที่ช่อง "Location completion"
 
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/autocompletion.png
+.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/14.0/th_address/static/description/autocompletion.png
     :width: 80 %
     :align: center
 
@@ -107,7 +107,7 @@ Usage
 * ไปที่ Contacts > Configuration > Import from Geonames
 * เลือก Thailand และกดปุ่ม import
 
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/data_english.png
+.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/14.0/th_address/static/description/data_english.png
     :alt: ข้อมูลภาษาอังกฤษ
     :width: 80 %
     :align: center
@@ -117,7 +117,7 @@ Usage
     https://github.com/poonlap/odoo-th/raw/14.0/th_address/data/th_en/%s.zip
 
 
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/data_mix.png
+.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/14.0/th_address/static/description/data_mix.png
     :alt: ข้อมูลภาษาผสม
     :width: 80 %
     :align: center
@@ -130,7 +130,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/poonlap/odoo-th/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/poonlap/odoo-th/issues/new?body=module:%20th_address%0Aversion:%20modules%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/poonlap/odoo-th/issues/new?body=module:%20th_address%0Aversion:%2014.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -158,6 +158,6 @@ Current maintainer:
 
 |maintainer-poonlap| 
 
-This module is part of the `poonlap/odoo-th <https://github.com/poonlap/odoo-th/tree/modules/th_address>`_ project on GitHub.
+This module is part of the `poonlap/odoo-th <https://github.com/poonlap/odoo-th/tree/14.0/th_address>`_ project on GitHub.
 
 You are welcome to contribute.

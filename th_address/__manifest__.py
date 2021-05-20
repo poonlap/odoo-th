@@ -4,7 +4,7 @@
     "name": "Thai Localization - Thai address data",
     "version": "14.0.1.0.0",
     "author": "Poonlap V.",
-    "website": "https://github.com/poonlap/th_address",
+    "website": "https://github.com/poonlap/odoo-th",
     "license": "AGPL-3",
     "category": "Localisation/Asia",
     "summary": """

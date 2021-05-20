@@ -4,7 +4,7 @@
     "name": "Thai address completion by Tax ID (VAT)",
     "version": "14.0.1.0.0",
     "author": "Poonlap V.",
-    "website": "https://github.com/poonlap/th_address_vat",
+    "website": "https://github.com/poonlap/odoo-th",
     "license": "AGPL-3",
     "category": "Localisation/Asia",
     "summary": "Auto-completion of the address when the tax ID is provided.",
