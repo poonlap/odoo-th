@@ -81,67 +81,8 @@ Thai Localization - Thai address data
 .. contents::
    :local:
 
-Installation
-============
-
-* นำโฟลเดอร์โมดูลที่ต้องการติดตั้งไปไว้ใน addons path ของระบบ
-* ไปที่ Settings แล้วเลื่อนไปด้านล่างสุด คลิกที่ Activate the developer mode เพื่อเข้าสู่ developer mode
-* ไปที่ Apps และคลิกที่ Update Apps List. คลิกปุ่ม Update เพื่อให้ระบบรับรู้ว่ามีโฟลเดอร์โมดูลใหม่ใน addons path แล้ว
-* ที่ช่องค้นหา Apps. ลบ Apps ทิ้ง แล้วพิมพ์คำว่า thai
-* คลิกติดตั้งโมดูลที่ต้องการ
-
 Usage
 =====
-
-โมดูลนี้ทำอะไร
-------------
-* กรณีที่ภาษาหลักที่ใช้ไม่ใช่ภาษาไทย โมดูลนี้จะเพิ่มภาษาไทยเป็นภาษาที่ 2 และนำเข้าคำแปลภาษาไทยในระบบ. 
-* ติดตั้งโมดูล `Base Location Geonames Import <https://github.com/OCA/partner-contact/tree/14.0/base_location_geonames_import>`_ ซึ่งโมดูลนี้จะติดตั้งโมดูล `Location management (aka Better ZIP) <https://github.com/OCA/partner-contact/tree/14.0/base_location>`_ อีกที
-* ตั้งค่า system parameter ``geonames.url`` สำหรับดึงข้อมูล ตำบล, อำเภอ, จังหวัด และรหัสไปรษณีย์ เป็นภาษาไทย. หากต้องการเป็นภาษาอังกฤษ หรือผสมกัน สามารถเปลี่ยนได้ภายหลัง
-* ระหว่างติดตั้ง จะนำเข้า (import) ข้อมูล ตำบล, อำเภอ, จังหวัด และรหัสไปรษณีย์ เป็นภาษาไทยอัตโนมัติ. เมื่อติดตั้งโมดูลเสร็จแล้ว ข้อมูลพร้อมใช้งานทันที ลดขั้นตอนการนำเข้าข้อมูลเอง
-
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/data_provinces.png
-    :alt: ข้อมูลจังหวัด
-    :width: 80 %
-    :align: center
-
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/data_cities.png
-    :alt: ข้อมูลตำบลและอำเภอ
-    :width: 80 %
-    :align: center
-
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/data_zips.png
-    :alt: ข้อมูลรหัสไปรษณีย์
-    :width: 80 %
-    :align: center
-
-* เวลาใช้ Location completion ค้นหาที่อยู่ (ตำบล, อำเภอ, จังหวัด, รหัสไปรษณีย์) เมื่อเลือกข้อมูลที่ค้นหาได้แล้ว จะใส่ชื่อตำบลในช่อง Street2 และใส่ชื่ออำเภอในช่อง Ciy ให้อัตโนมัติ
-
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/location_completion_01.png
-    :alt: ค้นหา
-    :width: 80 %
-    :align: center
-
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/location_completion_02.png
-    :alt: กรอกข้อมูลแยก
-    :width: 80 %
-    :align: center
-
-* เปลี่ยนค่า ``address_format`` ให้ใช่้ชื่อ จังหวัด ``state_name`` แทน ``state_id`` ที่เป็นค่าตั้งต้น
-* ตั้งค่า Vat Label เป็น Tax ID
-
-.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address/static/description/country_setting.png
-    :alt: address_format และ Vat label
-    :width: 80 %
-    :align: center
-
-ลองใช้งาน th_address จาก docker image
------------------------------------------
-โมดูลนี้รวมไว้ใน `docker odoo-th <https://hub.docker.com/r/poonlap/odoo-th>`_ แล้ว สามารถลองใช้ได้ทันที.::
-
-    $ git clone https://github.com/poonlap/odoo-th.git
-    $ cd odoo-th
-    $ docker-compose up
 
 สร้าง Contact หรือลูกค้าใหม่
 ------------------------
@@ -200,11 +141,6 @@ Authors
 ~~~~~~~
 
 * Poonlap V.
-
-Contributors
-~~~~~~~~~~~~
-
-* Poonlap V. <poonlap@tanabutr.co.th>
 
 Other credits
 ~~~~~~~~~~~~~
