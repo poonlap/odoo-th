@@ -25,7 +25,7 @@ Thai address completion by Tax ID (VAT)
 
 ลองใช้งาน th_address_vat จาก docker image
 -----------------------------------------
-โมดูลนี้รวมไว้ใน `docker odoo-th <https://hub.docker.com/r/poonlap/odoo-th>`_ แล้ว สามารถลองใช้ได้ทันที.::
+โมดูลนี้รวมไว้ใน `docker odoo-th <https://github.com/poonlap/odoo-th>`_ แล้ว สามารถลองใช้ได้ทันที.::
 
     $ git clone https://github.com/poonlap/odoo-th.git
     $ cd odoo-th/docker
