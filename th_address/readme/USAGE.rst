@@ -14,7 +14,7 @@
 * ไปที่ Settings > Technical > System Parameters
 * แก้ค่าตัวแปร ``geonames.url`` เป็น::
 
-    https://github.com/poonlap/th_address/raw/14.0/data/en/%s.zip
+    https://github.com/poonlap/odoo-th/raw/14.0/th_address/data/en/%s.zip
 
 
 
@@ -28,7 +28,7 @@
 
 * กรณีที่ต้องการข้อมูลผสม ภาษาไทยและอังกฤษ ให้ตั้งค่า ``geonames.url`` เป็น::
 
-    https://github.com/poonlap/th_address/raw/14.0/data/th_en/%s.zip
+    https://github.com/poonlap/odoo-th/raw/14.0/th_address/data/th_en/%s.zip
 
 
 .. figure:: ../static/description/data_mix.png

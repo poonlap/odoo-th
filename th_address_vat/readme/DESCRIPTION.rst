@@ -1,6 +1,3 @@
-This module uses a web service to validate Tax Identification Number (TIN) (i.e., VAT)
-to prevent forging. It also gets the company's information, such as, name, address
-from another web service and automatically fill out partner's information.
-This is useful and able to avoid input error.
-
-The web services are provided by Revenue Department of Thailand.
+โมดูลนี้ใช้สำหรับกรอกที่อยู่ของลูกค้าอัตโนมัติ จากเลขประจำตัวผู้เสียภาษี (VAT 13 หลัก). 
+โดยจะใช้เลขประจำตัวผู้เสียภาษี นำไปหาที่อยู่มาให้จาก `web service ของกรมสรรพากร <http://www.rd.go.th/publish/42546.0.html>`_. 
+หากเลขประจำตัวผู้เสียภาษีหรือเลขที่สาขาไม่ถูกต้อง โมดูลนี้จะแจ้งให้ผู้ใช้ทราบailand.
