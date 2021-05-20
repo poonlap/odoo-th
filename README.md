@@ -1,3 +1,7 @@
+Odoo Docker with Thai localization
+----------------
+[odoo-th](odoo-th/): Dockerfile สำหรับสร้าง Docker image ที่ใช้งาน Odoo 14.0 (ปัจจุบันปี 2021) หรือเวอร์ชั่นอื่นๆเช่น 13.0 หรือ Odoo 12.0 ร่วมกับภาษาไทย (Thai localization) ได้ทันที
+
 <!-- prettier-ignore-start -->
   [//]: # (addons)
 
