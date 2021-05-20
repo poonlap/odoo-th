@@ -13,9 +13,9 @@ Thai address completion by Tax ID (VAT)
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-poonlap%2Fth_address-lightgray.png?logo=github
-    :target: https://github.com/poonlap/th_address/tree/14.0/th_address_vat
-    :alt: poonlap/th_address
+.. |badge3| image:: https://img.shields.io/badge/github-poonlap%2Fodoo--th-lightgray.png?logo=github
+    :target: https://github.com/poonlap/odoo-th/tree/modules/th_address_vat
+    :alt: poonlap/odoo-th
 
 |badge1| |badge2| |badge3| 
 
@@ -45,7 +45,7 @@ Installation
 Installation of this module will also install the module th_address.
 The module th_address will populate subdistricts, districts, provinces (states) for Thailand.
 
-.. figure:: https://raw.githubusercontent.com/poonlap/th_address/14.0/th_address_vat/static/description/installation.png
+.. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address_vat/static/description/installation.png
     :alt: installation
     :width: 80 %
     :align: center
@@ -57,7 +57,7 @@ Go to "Contacts" and create a new contact. This module is mainly for TIN (VAT) v
 It is supposed that you already know a partner's (company) TIN which 13 digits number.
 Type the number in "Tax ID" field.
 
- .. figure:: https://raw.githubusercontent.com/poonlap/th_address/14.0/th_address_vat/static/description/input_tin.png
+ .. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address_vat/static/description/input_tin.png
     :alt: Input Tax Indentification Number, VAT
     :width: 80 %
     :align: center
@@ -66,7 +66,7 @@ Press the tab key to move the cursor to another field, or click somewhere outsid
 This will activate TIN validation with a web service which provided by Revenue Department of Thailand.
 If the TIN is valid, the module will get other information such as, name, address and fill out in the form automatically.
 
- .. figure:: https://raw.githubusercontent.com/poonlap/th_address/14.0/th_address_vat/static/description/autofill_sample.png
+ .. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address_vat/static/description/autofill_sample.png
     :alt: Auto-fill result
     :width: 80 %
     :align: center
@@ -74,12 +74,12 @@ If the TIN is valid, the module will get other information such as, name, addres
 For a company which has many branches. You can change the branch number which is 5 digits number.
 The module will change the address accordingly.
 
- .. figure:: https://raw.githubusercontent.com/poonlap/th_address/14.0/th_address_vat/static/description/main_branch.png
+ .. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address_vat/static/description/main_branch.png
     :alt: Main branch
     :width: 80 %
     :align: center
 
- .. figure:: https://raw.githubusercontent.com/poonlap/th_address/14.0/th_address_vat/static/description/another_branch.png
+ .. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address_vat/static/description/another_branch.png
     :alt: Another branch
     :width: 80 %
     :align: center
@@ -91,42 +91,30 @@ This module verify the TIN and branch number. It the pair is not valid, the modu
 Though, a user can still save the record, if needed.
 
 Verify TIN
- .. figure:: https://raw.githubusercontent.com/poonlap/th_address/14.0/th_address_vat/static/description/tin_validation.png
+ .. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address_vat/static/description/tin_validation.png
     :alt: Validate TIN
     :width: 80 %
     :align: center
 
 Verify Branch number
- .. figure:: https://raw.githubusercontent.com/poonlap/th_address/14.0/th_address_vat/static/description/branch_validation.png
+ .. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address_vat/static/description/branch_validation.png
     :alt: Validate Branch
     :width: 80 %
     :align: center
 
 Validate Branch format
- .. figure:: https://raw.githubusercontent.com/poonlap/th_address/14.0/th_address_vat/static/description/branch_format.png
+ .. figure:: https://raw.githubusercontent.com/poonlap/odoo-th/modules/th_address_vat/static/description/branch_format.png
     :alt: Verify Branch number format
     :width: 80 %
     :align: center
 
-Changelog
-=========
-
-13.0.3.0.1 (2020-12-03)
-~~~~~~~~~~~~~~~~~~~~~~~
-
-**Features**
-
-- Validate Tax Identification Number (TIN) or Personal Identification Number (PIN) with Thailand Revenue Department web services.
-- Auto fill name, address when typed TIN (VAT).
-- Validate format of Branch field.
-
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/poonlap/th_address/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/poonlap/odoo-th/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/poonlap/th_address/issues/new?body=module:%20th_address_vat%0Aversion:%2014.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/poonlap/odoo-th/issues/new?body=module:%20th_address_vat%0Aversion:%20modules%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -160,6 +148,6 @@ Current maintainer:
 
 |maintainer-poonlap| 
 
-This module is part of the `poonlap/th_address <https://github.com/poonlap/th_address/tree/14.0/th_address_vat>`_ project on GitHub.
+This module is part of the `poonlap/odoo-th <https://github.com/poonlap/odoo-th/tree/modules/th_address_vat>`_ project on GitHub.
 
 You are welcome to contribute.
