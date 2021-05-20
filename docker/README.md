@@ -30,7 +30,7 @@ Repository นี้เป็น Dockerfile สำหรับสร้าง Do
 จึงทำ docker image ที่สามารถรันได้เลย สำหรับใช้ทดสอบ, หรือใช้งานจริงก็ได้ โดย base image ดั้งเดิมก็มาจาก [Odoo Docker official Images](https://hub.docker.com/_/odoo)  คือเป็น image เดียวกันแต่ใส่ทุกอย่างที่อยากใช้มาให้แล้ว.
 
 # Tag ที่ใช้ได้
-- latest สำหรับรัน Odoo 14.0 รุ่นก่อนออกตัวจริงจาก [Odoo nightly build master](https://nightly.odoo.com/master/nightly/deb/) 
+- latest (image เดียวกันกับ 14.0)
 - 14.0 
 - 13.0 
 
