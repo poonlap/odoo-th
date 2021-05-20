@@ -17,8 +17,8 @@ Repository นี้เป็น Dockerfile สำหรับสร้าง Do
 - [OCA Server UX](https://github.com/OCA/server-ux/)
 - [OCA alternative reporting engines and reporting utilities ](https://github.com/OCA/reporting-engine/)
 - [OCA Account reconcile modules ](https://github.com/OCA/account-reconcile) widget reconcile ที่มีในรุ่น 13.0 แต่ไม่มีในรุ่น 14.0
-- [th_address โมดูลที่อยู่ภาษาไทย] (https://github.com/poonlap/th_address) สร้างข้อมูล ตำบล, อำเภอ, จังหวัด พร้อมใช้งาน และใช้ความสามารถ autocompletion ของโมดูล base_location
-- [th_address_vat โมดูลกรอกที่อยู่จากเลข VAT] (https://github.com/poonlap/th_address_vat) หาที่อยู่จาก web service ของกรรมสรรพากรจากเลขประจำตัวผู้เสียภาษี และกรอกที่อยู่ให้อัตโนมัติ ไม่ผิดพลาด
+- [th_address โมดูลที่อยู่ภาษาไทย](https://github.com/poonlap/th_address) สร้างข้อมูล ตำบล, อำเภอ, จังหวัด พร้อมใช้งาน และใช้ความสามารถ autocompletion ของโมดูล base_location
+- [th_address_vat โมดูลกรอกที่อยู่จากเลข VAT](https://github.com/poonlap/th_address_vat) หาที่อยู่จาก web service ของกรรมสรรพากรจากเลขประจำตัวผู้เสียภาษี และกรอกที่อยู่ให้อัตโนมัติ ไม่ผิดพลาด
 
 [Dockerfile](https://github.com/poonlap/odoo-th/blob/14.0/Dockerfile) ใช้ base มาจาก [Odoo Official](https://hub.docker.com/_/odoo) มีการเพิ่ม Odoo repository ไว้สำหรับ upgrade version ตาม nightly build ของแต่ละวันลงใน image (local) ได้ด้วย
 
