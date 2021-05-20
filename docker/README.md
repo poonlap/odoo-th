@@ -33,7 +33,7 @@ Repository นี้เป็น Dockerfile สำหรับสร้าง Do
 - latest สำหรับรัน Odoo 14.0 รุ่นก่อนออกตัวจริงจาก [Odoo nightly build master](https://nightly.odoo.com/master/nightly/deb/) 
 - 14.0 
 - 13.0 
-- 12.0
+
 ## การสร้าง docker image
 ใช้ --build-arg และระบุ VERSION ตอน build. 
 ### Odoo 14
