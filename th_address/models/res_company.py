@@ -9,7 +9,7 @@ from odoo import api, models
 class ResCompany(models.Model):
     _inherit = "res.company"
 
-    @api.onchange("zip_id")
+    @api.onchange("zip_id", "city_id", "state_id", "country_id")
     def _onchange_zip_id(self):
         if self.zip_id:
             self.update(

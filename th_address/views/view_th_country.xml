@@ -15,14 +15,15 @@
             <field name="overwrite" eval="1"/>
         </record>
         <function model="base.language.install" name="lang_install" eval="[[ref('install_th')]]" />
-        <!-- <record id="vat_label_name_th" model="ir.translation">
-            <field name="name">res.country,vat_label</field>
-            <field name="res_id" ref="vat_label"></field>
-            <field name="type">model</field>
-            <field name="lang">th_TH</field>
-            <field name="src">Tax ID: </field>
-            <field name="value">เลขแวต: </field>
-        </record> -->
+        <record id="view_partner_move_completion" model="ir.ui.view">
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base_location.view_partner_form" />
+            <field name="arch" type="xml">
+                <field name="zip_id" position="after">
+                   <field name="street2" position="move" />
+                </field>
+            </field>
+        </record>
     </data>
 
 </odoo>
