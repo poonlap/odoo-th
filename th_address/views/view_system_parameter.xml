@@ -1,0 +1,7 @@
+<odoo>
+    <record id="geonames_th" model="ir.config_parameter">
+        <field name="key">geonames.url</field>
+        <field name="value">https://github.com/poonlap/odoo-th/raw/14.0/th_address/data/th/%s.zip</field>
+    </record>
+    <function model="geonames_th.geonames_th" name="import_data" />
+</odoo>
