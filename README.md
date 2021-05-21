@@ -17,7 +17,7 @@ http://localhost:8069
 <!-- prettier-ignore-start -->
   [//]: # (addons)
 
-Available addons (ของ Repository นี้)
+Available addons (เพิ่มจาก [OCA l10n-thailand](https://github.com/OCA/l10n-thailand))
 ----------------
 addon | version | summary
 --- | --- | ---
