@@ -1,11 +1,23 @@
 Odoo Docker with Thai localization
 ----------------
-[Dockerfile](docker/) สำหรับสร้าง [Docker image](https://hub.docker.com/r/poonlap/odoo-th/tags?page=1&ordering=last_updated) ที่ใช้งาน Odoo 14.0 (ปัจจุบันปี 2021) หรือเวอร์ชั่นอื่นๆเช่น 13.0 ร่วมกับภาษาไทย (Thai localization) ได้ทันที
+[Dockerfile](docker/) สำหรับสร้าง [Docker image](https://hub.docker.com/r/poonlap/odoo-th/tags?page=1&ordering=last_updated) ที่ใช้งาน Odoo 14.0 (ปัจจุบันปี 2021) หรือเวอร์ชั่นอื่นๆเช่น 13.0 ร่วมกับภาษาไทย (l10n_thailand, Thai localization) ได้ทันที
+
+วิธีใช้
+--------
+```
+$ git clone https://github.com/poonlap/odoo-th.git
+$ cd odoo-th/docker
+$ docker-compose up
+```
+เปิดเบราเซอร์เข้า URL
+```
+http://localhost:8069
+```
 
 <!-- prettier-ignore-start -->
   [//]: # (addons)
 
-Available addons
+Available addons (ของ Repository นี้)
 ----------------
 addon | version | summary
 --- | --- | ---
