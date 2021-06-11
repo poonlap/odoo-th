@@ -13,6 +13,7 @@ $ docker-compose up
 ```
 http://localhost:8069
 ```
+[รายละเอียดเพิ่มเติม](docker/)
 
 <!-- prettier-ignore-start -->
   [//]: # (addons)
