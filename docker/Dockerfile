@@ -8,14 +8,14 @@ USER root
     
 # Generate locale, set timezone
 RUN apt-get update \
-	&& apt-get -yq install locales tzdata git curl fonts-tlwg-laksaman gcc libpython3-dev\
+	&& apt-get -yq install locales tzdata git curl fonts-tlwg-laksaman gcc libpython3-dev rustc\
 	&& sed -i 's/# th_/th_/' /etc/locale.gen \
 	&& locale-gen \
     && cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
 
 # Add Odoo Repository for upgrading and commit the image
 RUN curl https://nightly.odoo.com/odoo.key | apt-key add -
-RUN if [ ${VERSION} = 'latest' ]; then echo "deb http://nightly.odoo.com/14.0/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list; else \
+RUN if [ ${VERSION} = 'latest' ]; then echo "deb http://nightly.odoo.com/15.0/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list; else \
        echo "deb http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list; fi
 
 # Add OCA modules via git
@@ -34,7 +34,7 @@ RUN mkdir -p /opt/odoo/addons \
 	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/poonlap/odoo-th || true
 
 
-RUN pip3 install num2words==0.5.10 xlwt xlrd openpyxl promptpay --no-cache-dir 
+RUN pip3 install num2words==0.5.10 xlwt xlrd openpyxl promptpay pyOpenSSL --no-cache-dir 
 
 # Upgrade Odoo to the latest 13.0 nightly build when VERSION=13.0 (the current docker odoo official)
 # Upgrade Odoo to 14.0 nightly build when VERSION=latest (master/nightly)

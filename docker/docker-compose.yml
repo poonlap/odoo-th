@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    image: poonlap/odoo-th:latest # latest == 14.0
+    image: poonlap/odoo-th:15.0 # latest == 14.0
     command: -- --dev=all
     depends_on:
       - db
