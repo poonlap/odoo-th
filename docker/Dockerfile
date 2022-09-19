@@ -1,7 +1,10 @@
 ARG VERSION=latest
 ARG ODOO_IMAGE=odoo:${VERSION}
+ARG MOD_VER=15.0
 FROM ${ODOO_IMAGE}
 ARG VERSION
+ARG MOD_VER
+
 LABEL maintainer="Poonlap V. <poonlap@tanabutr.co.th>"
 
 USER root
@@ -22,16 +25,16 @@ RUN if [ ${VERSION} = 'latest' ]; then echo "deb http://nightly.odoo.com/15.0/ni
 # ODOO_VERSION variable is inherited from odoo official image
 RUN mkdir -p /opt/odoo/addons \ 
 	&& cd /opt/odoo/addons \
-	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/l10n-thailand.git \
-    && git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/web.git \
-	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/partner-contact.git \
-	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/server-ux.git \
-	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/server-brand.git \
-	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/social.git \
-	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/account-financial-reporting \
-	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/reporting-engine.git \
-	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/OCA/account-reconcile.git \
-	&& git clone --single-branch --branch ${ODOO_VERSION} https://github.com/poonlap/odoo-th || true
+	&& git clone --single-branch --branch ${MOD_VER} https://github.com/OCA/l10n-thailand.git \
+    && git clone --single-branch --branch ${MOD_VER} https://github.com/OCA/web.git \
+	&& git clone --single-branch --branch ${MOD_VER} https://github.com/OCA/partner-contact.git \
+	&& git clone --single-branch --branch ${MOD_VER} https://github.com/OCA/server-ux.git \
+	&& git clone --single-branch --branch ${MOD_VER} https://github.com/OCA/server-brand.git \
+	&& git clone --single-branch --branch ${MOD_VER} https://github.com/OCA/social.git \
+	&& git clone --single-branch --branch ${MOD_VER} https://github.com/OCA/account-financial-reporting \
+	&& git clone --single-branch --branch ${MOD_VER} https://github.com/OCA/reporting-engine.git \
+	&& git clone --single-branch --branch ${MOD_VER} https://github.com/OCA/account-reconcile.git \
+	&& git clone --single-branch --branch ${MOD_VER} https://github.com/poonlap/odoo-th || true
 
 
 RUN pip3 install num2words==0.5.10 xlwt xlrd openpyxl promptpay pyOpenSSL --no-cache-dir 
