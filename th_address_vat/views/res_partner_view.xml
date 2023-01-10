@@ -4,8 +4,13 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='vat']" position="after">
-                <field name="branch" placeholder="Branch ID., e.g., 00000" />
+            <field name="company_name" position="after">
+                <group>
+                    <field name="branch" class="oe_edit_only" attrs="{'invisible': [('is_company', '=', False)],}" />
+                </group>
+            </field>
+            <xpath expr="//field[@name='branch']" position="before">
+                <xpath expr="//field[@name='vat']" position="move" />
             </xpath>
         </field>
     </record>
