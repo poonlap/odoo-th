@@ -9,12 +9,6 @@
         <record id="base.th" model="res.country">
             <field eval="'Tax ID:'" name="vat_label" />
         </record>
-        <record model="base.language.install" id="install_th">
-            <field name="lang">th_TH</field>
-            <field name="state">done</field>
-            <field name="overwrite" eval="1"/>
-        </record>
-        <function model="base.language.install" name="lang_install" eval="[[ref('install_th')]]" />
         <record id="view_partner_move_completion" model="ir.ui.view">
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base_location.view_partner_form" />

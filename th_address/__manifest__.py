@@ -2,7 +2,7 @@
 # Licensed AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 {
     "name": "Thai Localization - Thai address data",
-    "version": "14.0.1.0.0",
+    "version": "16.0.1.0.0",
     "author": "Poonlap V.",
     "website": "https://github.com/poonlap/odoo-th",
     "license": "AGPL-3",

@@ -8,8 +8,8 @@ from logging import DEBUG, INFO
 from os import path
 from pathlib import Path
 
-import requests
-from odoo import _, api, models
+import requests, certifi
+from odoo import _, api, models, fields
 from requests import Session
 from zeep import Client, Transport, helpers
 
@@ -18,6 +18,8 @@ _logger = logging.getLogger(__name__)
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
+    
+    branch = fields.Char(string="Branch ID", help="Branch ID, e.g., 00000, 00001, ...")
     tin_web_service_url = (
         "https://rdws.rd.go.th/serviceRD3/checktinpinservice.asmx?wsdl"
     )
@@ -33,13 +35,12 @@ class ResPartner(models.Model):
 
         sess = Session()
         mod_dir = path.dirname(path.realpath(__file__))
-        cert_path = str(Path(mod_dir).parents[0]) + "/static/cert/adhq1_ADHQ5.cer"
-        sess.verify = cert_path
+        
         transp = Transport(session=sess)
         try:
             cl = Client(ResPartner.tin_web_service_url, transport=transp)
         except requests.exceptions.SSLError:
-            _logger.log(INFO, "Fall back to unverifed HTTPS request.")
+            _logger.log(INFO, "Set session verify to False.")
             sess.verify = False
             transp = Transport(session=sess)
             cl = Client(ResPartner.tin_web_service_url, transport=transp)
@@ -57,14 +58,15 @@ class ResPartner(models.Model):
         """
         branch = int(branch)
         sess = Session()
-        mod_dir = path.dirname(path.realpath(__file__))
-        cert_path = str(Path(mod_dir).parents[0]) + "/static/cert/adhq1_ADHQ5.cer"
-        sess.verify = cert_path
+        # mod_dir = path.dirname(path.realpath(__file__))
+        # cert_path = str(Path(mod_dir).parents[0]) + "/static/cert/adhq1_ADHQ5.cer"
+        # sess.verify = False
         transp = Transport(session=sess)
         try:
             cl = Client(ResPartner.vat_web_service_url, transport=transp)
         except requests.exceptions.SSLError:
-            _logger.log(INFO, "Fall back to unverifed HTTPS request.")
+            # if failed, try to set verify to False.
+            _logger.log(INFO, "Set session verify to False.")
             sess.verify = False
             transp = Transport(session=sess)
             cl = Client(ResPartner.vat_web_service_url, transport=transp)
@@ -179,7 +181,7 @@ class ResPartner(models.Model):
 
                 self.update(
                     {
-                        "name_company": data["vtitleName"] + " " + data["vName"],
+                        "name": data["vtitleName"] + " " + data["vName"],
                         "street": street[0],
                         "street2": street[1],
                         "city": amphur,
